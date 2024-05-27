@@ -22,6 +22,14 @@
 -->
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
+	<!-- 년도와 월 기준으로 필터링  -->
+	<select id="getBudgetByMonth" parameterType="map" resultType="Budget">
+        SELECT *
+        FROM budget
+        WHERE EXTRACT(YEAR FROM date) = #{year}
+          AND EXTRACT(MONTH FROM date) = #{month}
+    </select>
+	
 	
 	<select id="boardList" resultType="Budget">
 		SELECT * FROM budget ORDER BY no DESC

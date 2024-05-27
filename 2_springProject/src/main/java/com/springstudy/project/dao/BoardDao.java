@@ -1,10 +1,12 @@
-package com.spirngstudy.project.dao;
+package com.springstudy.project.dao;
 
 import java.util.List;
 
 import com.springstudy.project.domain.Budget;
 
 public interface BoardDao {
+	List<Budget> getBudgetByMonth(int year, int month);
+	
 	List<Budget> boardList();
 	
 	Budget getBoard(int no);

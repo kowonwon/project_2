@@ -1,6 +1,8 @@
-package com.spirngstudy.project.dao;
+package com.springstudy.project.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +46,15 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public void deleteBoard(int no) {
 		
+	}
+	
+	// 년월 별로 게시글 필터링
+	@Override
+	public List<Budget> getBudgetByMonth(int year, int month) {
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("year", year);
+		params.put("month", month);
+		return sqlSession.selectList(NAME_SPACE+".getBudgetByMonth", params);
 	}
 }
