@@ -17,8 +17,9 @@ public class BoardController {
 	@Autowired(required=false)
 	private BoardService boardService;
 	
-	public void setBoardService(BoardService boardService) {
-		this.boardService = boardService;
+	@RequestMapping("/calendar")
+	public String calendar() {
+		return "calendar";
 	}
 	
 	@RequestMapping(value={"/boardList", "/list"}, method=RequestMethod.GET)

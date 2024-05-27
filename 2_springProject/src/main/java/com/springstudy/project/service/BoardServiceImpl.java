@@ -14,10 +14,6 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired(required=false)
 	private BoardDao boardDao;
 	
-	public void setBoardDao(BoardDao boardDao) {
-		this.boardDao = boardDao;
-	}
-
 	@Override
 	public List<Budget> boardList() {
 		return boardDao.boardList();

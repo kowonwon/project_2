@@ -13,12 +13,8 @@ public class BoardDaoImpl implements BoardDao{
 	
 	private final String NAME_SPACE = "com.spirngstudy.proejct.mapper.BoardMapper";
 	
-	private SqlSessionTemplate sqlSession;
-	
 	@Autowired(required=false)
-	public void setSqlSession(SqlSessionTemplate sqlSession) {
-		this.sqlSession = sqlSession;
-	}
+	private SqlSessionTemplate sqlSession;
 
 	@Override
 	public List<Budget> boardList() {
