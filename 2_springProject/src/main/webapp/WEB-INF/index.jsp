@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="row container">
-		<div class="col">
+		<div class="col-3">
 			<%@ include file="template/side.jsp" %>
 		</div>
 		<div class="col">

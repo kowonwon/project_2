@@ -11,15 +11,11 @@ import com.springstudy.project.domain.Budget;
 @Repository
 public class BoardDaoImpl implements BoardDao{
 	
-	private final String NAME_SPACE = "com.spirngstudy.proejct.mapper.BoardMapper";
+	private final String NAME_SPACE = "com.springstudy.project.mapper.BoardMapper";
 	
+	@Autowired(required=false)
 	private SqlSessionTemplate sqlSession;
 	
-	@Autowired
-	public void setSqlSession(SqlSessionTemplate sqlSession) {
-		this.sqlSession = sqlSession;
-	}
-
 	@Override
 	public List<Budget> boardList() {
 		return sqlSession.selectList(NAME_SPACE + ".boardList");
