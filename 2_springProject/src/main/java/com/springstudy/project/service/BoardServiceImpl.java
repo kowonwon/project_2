@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spirngstudy.project.dao.BoardDao;
+import com.springstudy.project.dao.BoardDao;
 import com.springstudy.project.domain.Budget;
 
 @Service
@@ -34,5 +34,12 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void deleteBoard(int no) {
+	}
+
+	
+	// 게시글 년 월 별 필터링
+	@Override
+	public List<Budget> getBudgetByMonth(int year, int month) {
+		return boardDao.getBudgetByMonth(year, month);
 	}
 }
