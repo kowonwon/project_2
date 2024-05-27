@@ -1,9 +1,0 @@
-/.metadata/
-.metadata/
-*.class
-
-**/resources/bootstrap/
-**/resources/js/jquery*.*
-**/webapp/WEB-INF/classes/
-
-/**/*.log
