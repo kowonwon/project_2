@@ -16,7 +16,7 @@
 		height: 100px;
 		vertical-align: top;
 		padding: 5px;
-	}	
+	}	git 
 </style>
 
  <table class="calendar">
