@@ -21,19 +21,22 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Budget getBoard(int no) {
-		return null;
+		return boardDao.getBoard(no);
 	}
 
 	@Override
 	public void insertBoard(Budget budget) {
+		boardDao.insertBoard(budget);
 	}
 
 	@Override
 	public void updateBoard(Budget budget) {
+		boardDao.updateBoard(budget);
 	}
 
 	@Override
 	public void deleteBoard(int no) {
+		boardDao.deleteBoard(no);
 	}
 
 	

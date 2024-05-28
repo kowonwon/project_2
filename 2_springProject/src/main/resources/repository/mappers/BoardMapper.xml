@@ -30,9 +30,26 @@
           AND EXTRACT(MONTH FROM date) = #{month}
     </select>
 	
+	<delete id="deleteBoard">
+		DELETE FROM budget WHERE no = #{no}
+	</delete>
+
+	<update id="updateBoard" parameterType="Budget">
+		UPDATE budget set category=#{category}, content=#{content}, price=#{price}, evaluation=#{evaluation}
+		WHERE no = #{no}
+	</update>
+
+	<insert id="insertBoard" parameterType="Budget" useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO budget (writer, category, content, price, date, evaluation, good, bad)
+		VALUES (#{writer}, #{category}, #{content}, #{price}, sysdate(), #{evaluation}, 0, 0)
+	</insert>
+	
+	<select id="getBoard" resultType="Budget">
+		SELECT * FROM budget WHERE no = #{no}
+	</select>
 	
 	<select id="boardList" resultType="Budget">
-		SELECT * FROM budget ORDER BY no DESC
+		SELECT * FROM budget ORDER BY date
 	</select>
 
 </mapper>	

@@ -25,12 +25,12 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public Budget getBoard(int no) {
-		return null;
+		return sqlSession.selectOne(NAME_SPACE + ".getBoard", no);
 	}
 
 	@Override
 	public void insertBoard(Budget budget) {
-		
+		sqlSession.insert(NAME_SPACE + ".insertBoard", budget);
 	}
 
 	@Override
@@ -40,12 +40,12 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public void updateBoard(Budget budget) {
-		
+		sqlSession.update(NAME_SPACE + ".updateBoard", budget);
 	}
 
 	@Override
 	public void deleteBoard(int no) {
-		
+		sqlSession.delete(NAME_SPACE + ".deleteBoard", no);
 	}
 	
 	// 년월 별로 게시글 필터링

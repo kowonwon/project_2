@@ -8,6 +8,7 @@
 <title>인덱스</title>
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script src="resources/js/jquery-3.7.1.min.js"></script>
+<script src="resources/js/formcheck.js"></script>
 </head>
 <body>
 	<div class="row container">
