@@ -17,7 +17,7 @@ public class BoardDaoImpl implements BoardDao{
 	
 	@Autowired(required=false)
 	private SqlSessionTemplate sqlSession;
-	
+
 	@Override
 	public List<Budget> boardList() {
 		return sqlSession.selectList(NAME_SPACE + ".boardList");

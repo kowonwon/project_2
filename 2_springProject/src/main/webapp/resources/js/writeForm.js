@@ -1,5 +1,5 @@
 $(function(){
-	
+
 	// 폼 추가
 	$("#addForm").on("click", function(){
 		addForm();
@@ -32,15 +32,19 @@ $(function(){
         // 체크된 폼만 서브밋
         $('.submitForm').each(function() {
             if ($(this).find('.formCheckbox').is(':checked')) {
+
             	var formData = $(this).serialize();
                 myBoardList(formData);
             }
         });
 	});
+
+
    
 	
 	// 새 폼 추가
 	function addForm() {
+
 		var newFormHtml = `
 				<form class="submitForm " method="post">
 			<input type="hidden" name="id" value="이현학"/> 
@@ -78,6 +82,7 @@ $(function(){
 		
 		$(".formContainer").append(newFormHtml);
 	}
+
 //	
 //	function myBoardList(formData) {
 //		$.ajax({
@@ -93,4 +98,5 @@ $(function(){
 //            }
 //		});
 //	}
+
 });
