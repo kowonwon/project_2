@@ -6,6 +6,8 @@ import com.springstudy.project.domain.Budget;
 import com.springstudy.project.domain.Reply;
 
 public interface BoardService {
+	
+	void updateReply(Reply reply);
 
 	List<Budget> myBoardList(String writer);
 

@@ -87,7 +87,7 @@
 		<div class="row my-3 d-none" id="replyForm">
 			<div class="col">
 				<form name="replyWriteForm" id="replyWriteForm">
-					<input type="hidden" name="bbsNo" value="${ budget.no }"/>
+					<input type="hidden" name="bbsNo" value="${budget.no}"/>
 					<input type="hidden" name="replyWriter" value="${sessionScope.member.id}" />
 					<div class="row bg-light my-3 p-3 border">
 						<div class="col">

@@ -16,6 +16,13 @@ public class BoardAjaxController {
 	@Autowired
 	BoardService boardService;
 	
+	@RequestMapping("/replyUpdate.ajax")
+	@ResponseBody
+	public List<Reply> updateReply(Reply reply) {
+		boardService.updateReply(reply);
+		return boardService.replyList(reply.getBbsNo());
+	}
+	
 	@RequestMapping("/replyWrite.ajax")
 	@ResponseBody
 	public List<Reply> addReply(Reply reply) {
