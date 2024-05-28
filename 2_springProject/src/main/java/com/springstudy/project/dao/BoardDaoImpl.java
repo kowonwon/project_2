@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springstudy.project.domain.Budget;
+import com.springstudy.project.domain.Reply;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -57,4 +58,9 @@ public class BoardDaoImpl implements BoardDao{
 		params.put("month", month);
 		return sqlSession.selectList(NAME_SPACE+".getBudgetByMonth", params);
 	}
+	
+	@Override
+	public List<Reply> replyList(int no) {
+		return sqlSession.selectList(NAME_SPACE + ".replyList", no);
+		}
 }

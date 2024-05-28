@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springstudy.project.service.BoardService;
 import com.springstudy.project.domain.Budget;
+import com.springstudy.project.domain.Reply;
 
 @Controller
 public class BoardController {
@@ -51,6 +52,10 @@ public class BoardController {
 	public String boardDetail(Model model, int no) {
 		Budget budget = boardService.getBoard(no);
 		model.addAttribute("budget", budget);
+		
+		List<Reply> replyList = boardService.replyList(no);
+		model.addAttribute("replyList", replyList);
+		
 		return "boardDetail";
 	}
 	

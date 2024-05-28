@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springstudy.project.dao.BoardDao;
 import com.springstudy.project.domain.Budget;
+import com.springstudy.project.domain.Reply;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -39,10 +40,14 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.deleteBoard(no);
 	}
 
-	
 	// 게시글 년 월 별 필터링
 	@Override
 	public List<Budget> getBudgetByMonth(int year, int month) {
 		return boardDao.getBudgetByMonth(year, month);
+	}
+
+	@Override
+	public List<Reply> replyList(int no) {
+		return boardDao.replyList(no);
 	}
 }
