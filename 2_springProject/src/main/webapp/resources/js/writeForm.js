@@ -1,4 +1,5 @@
 $(function(){
+	
 	// 폼 추가
 	$("#addForm").on("click", function(){
 		addForm();
@@ -31,20 +32,15 @@ $(function(){
         // 체크된 폼만 서브밋
         $('.submitForm').each(function() {
             if ($(this).find('.formCheckbox').is(':checked')) {
-                $(this).submit();
+            	var formData = $(this).serialize();
+                myBoardList(formData);
             }
         });
+	});
    
 	
 	// 새 폼 추가
 	function addForm() {
-//		let originalForm = $(".submitForm:first");
-//		let clonedForm = originalForm.clone();
-//		
-//		clonedForm.find(".resetBtn").click();
-//		clonedForm.find(".formCheckbox").prop('checked', false);
-//		
-//		$(".formContainer").append(clonedForm);
 		var newFormHtml = `
 				<form class="submitForm " method="post">
 			<input type="hidden" name="id" value="이현학"/> 
@@ -82,4 +78,19 @@ $(function(){
 		
 		$(".formContainer").append(newFormHtml);
 	}
+//	
+//	function myBoardList(formData) {
+//		$.ajax({
+//			url: "myBoardList.ajax",
+//			type: "get",
+//			data: formData,
+//			dataType: "json",
+//			success: function(resData){
+//				console.log(resData)
+//			},
+//			 error: function(xhr, status) {
+//                console.log("error: " + status);
+//            }
+//		});
+//	}
 });

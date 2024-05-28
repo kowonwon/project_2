@@ -5,6 +5,8 @@ import java.util.List;
 import com.springstudy.project.domain.Budget;
 
 public interface BoardDao {
+	List<Budget> myBoardList(String writer);
+	
 	List<Budget> getBudgetByMonth(int year, int month);
 	
 	List<Budget> boardList();
