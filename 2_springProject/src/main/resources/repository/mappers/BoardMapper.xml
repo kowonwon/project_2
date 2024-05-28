@@ -41,7 +41,7 @@
 
 	<insert id="insertBoard" parameterType="Budget" useGeneratedKeys="true" keyProperty="no">
 		INSERT INTO budget (writer, category, content, price, date, evaluation, good, bad)
-		VALUES (#{writer}, #{category}, #{content}, #{price}, sysdate(), #{evaluation}, 0, 0)
+		VALUES (#{writer}, #{category}, #{content}, #{price}, SYSDATE(), #{evaluation}, 0, 0)
 	</insert>
 	
 	<select id="getBoard" resultType="Budget">

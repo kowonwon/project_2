@@ -12,11 +12,11 @@
 			<div class="row">
 				<div class="col-2">
 					<label for="writer" class="form-label" id="writer">작성자</label>
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" name="writer">
 				</div>
 				<div class="col-2">
-				<label for="pass" class="form-label">카테고리</label>
-					<select class="form-control">
+				<label for="category" class="form-label">카테고리</label>
+					<select class="form-control" name="category">
 						<option value="">식비</option>
 						<option value="">의류</option>
 						<option value="">생필품</option>

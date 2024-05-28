@@ -21,5 +21,15 @@
 				 ${budget.content}
 			</div>
 		</div>
+		<div class="row my-3">
+			<div class="col text-center">
+				<input type="button" class="btn btn-outline-primary" id="detailUpdate" value="수정하기" >
+				&nbsp;&nbsp;
+				<input type="button" class="btn btn-outline-primary" id="detailDelete" value="삭제하기" >
+					&nbsp;&nbsp;
+				<input type="button" class="btn btn-outline-primary" value="목록보기" 
+					onclick="location.href='boardList'">
+			</div>
+		</div>
 	</div>
 </div>
