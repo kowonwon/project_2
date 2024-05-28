@@ -36,12 +36,12 @@
 	<!-- 댓글 -->
 	<div class="col-6 border border-secondary">
 		<div class="row" id="replyTitle">
-			<div class="col text-center">
+			<div class="col text-center mt-3">
 				<h3>평가</h3>
 			</div>
 		</div>
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-		  <button class="btn btn-outline-primary me-md-2" type="button" id="replyWrite">평가하기</button>
+		  <button id="replyWrite" class="btn btn-outline-primary me-md-2" type="button">평가하기</button>
 		</div>
 		<c:if test="${not empty replyList}">
 			<div class="row mb-3">
@@ -83,5 +83,26 @@
 				</div>
 			</div>
 		</c:if>
+		<!-- 댓글쓰기 폼 -->
+		<div class="row my-3 d-none" id="replyForm">
+			<div class="col">
+				<form name="replyWriteForm" id="replyWriteForm">
+					<input type="hidden" name="bbsNo" value="${ board.no }"/>
+					<input type="hidden" name="replyWriter" value="${sessionScope.member.id}" />
+					<div class="row bg-light my-3 p-3 border">
+						<div class="col">
+							<div class="row my-3">
+								<div class="col-12">
+									<textarea name="replyContent" id="replyContent" class="form-control" rows="4"></textarea>
+								</div>
+								<div class="col-md">
+									<input type="submit" value="제출" class="btn btn-outline-success h-100 w-100" id="replyWriteButton">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>

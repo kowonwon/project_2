@@ -35,11 +35,6 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public String isPassCheck(int no, String pass) {
-		return null;
-	}
-
-	@Override
 	public void updateBoard(Budget budget) {
 		sqlSession.update(NAME_SPACE + ".updateBoard", budget);
 	}
@@ -63,4 +58,9 @@ public class BoardDaoImpl implements BoardDao{
 	public List<Reply> replyList(int no) {
 		return sqlSession.selectList(NAME_SPACE + ".replyList", no);
 		}
+
+	@Override
+	public void addReply(Reply reply) {
+		sqlSession.insert(NAME_SPACE + ".addReply", reply);
+	}
 }

@@ -47,5 +47,6 @@
 					onclick="location.href='boardList'" class="btn btn-primary"/>
 			</div>
 		</form>
+		
 	</div>
 </div>

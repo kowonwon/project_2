@@ -22,7 +22,12 @@
 -->
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
-	<!-- 년도와 월 기준으로 필터링  -->
+
+	<insert id="addReply" parameterType="Reply">
+		INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)
+		VALUES(#{bbsNo}, #{replyContent}, #{replyWriter}, SYSDATE())
+	</insert>
+
 	<select id="replyList" resultType="Reply">
 		SELECT
 			no,
@@ -30,9 +35,10 @@
 			reply_content AS replyContent,
 			reply_writer AS replyWriter,
 			reg_date AS regDate
-		FROM reply WHERE bbs_no = #{no} ORDER BY no DESC
+		FROM reply WHERE bbs_no = #{no} ORDER BY reg_date
 	</select>
 	
+	<!-- 년도와 월 기준으로 필터링  -->
 	<select id="getBudgetByMonth" parameterType="map" resultType="Budget">
         SELECT *
         FROM budget

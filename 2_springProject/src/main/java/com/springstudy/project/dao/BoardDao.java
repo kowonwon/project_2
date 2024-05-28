@@ -6,6 +6,8 @@ import com.springstudy.project.domain.Budget;
 import com.springstudy.project.domain.Reply;
 
 public interface BoardDao {
+	void addReply(Reply reply);
+	
 	List<Reply> replyList(int no);
 	
 	List<Budget> getBudgetByMonth(int year, int month);
@@ -15,8 +17,6 @@ public interface BoardDao {
 	Budget getBoard(int no);
 	
 	void insertBoard(Budget budget);
-	
-	String isPassCheck(int no, String pass);
 	
 	void updateBoard(Budget budget);
 	

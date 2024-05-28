@@ -50,4 +50,9 @@ public class BoardServiceImpl implements BoardService {
 	public List<Reply> replyList(int no) {
 		return boardDao.replyList(no);
 	}
+
+	@Override
+	public void addReply(Reply reply) {
+		boardDao.addReply(reply);
+	}
 }
