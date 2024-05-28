@@ -23,7 +23,7 @@ public class BoardController {
 				@RequestParam("id") String writer) {
 		List <Budget> myList = boardService.myBoardList(writer);
 		model.addAttribute("myList", myList);
-		return "redirect:writeForm?id=이현학";
+		return "writeForm";
 	}
 	
 	@RequestMapping("/calendar")
