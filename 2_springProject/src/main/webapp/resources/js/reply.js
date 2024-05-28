@@ -25,12 +25,12 @@ $(function() {
 			data: params,
 			type: "post",
 			dataType: "json",
-			success: function(regData) {
+			success: function(resData) {
 				console.log(resData);
 				$("#replyList").empty();
 				
 				$.each(resData, function(i, v) {
-					var date = new Data(v.regDate);
+					var date = new Date(v.regDate);
 					var strDate = date.getFullYear() + "-" + ((date.getMonth() + 1 < 10) ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)) + "-"
 							+ (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " "
 							+ (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":"
@@ -54,10 +54,10 @@ $(function() {
 									+'</div>'
 								+'</div>'
 								+'<div class="col-4">'
-									+'<button class="modifyReply btn btn-outline-success btn-sm" data-no="${r.no}">'
+									+'<button class="modifyReply btn btn-outline-success btn-sm" data-no="' + v.no + '">'
 										+'<i class="bi bi-journal-text">수정</i>'
 									+'</button>'
-									+'<button class="deleteReply btn btn-outline-warning btn-sm" data-no="${r.no}">'
+									+'<button class="deleteReply btn btn-outline-warning btn-sm" data-no="' + v.no + '">'
 										+'<i class="bi bi-trash">삭제</i>'
 									+'</button>'
 								+'</div>'
