@@ -53,4 +53,3 @@
 		<h2>${myList.writer }님의 소비 활동</h2>
 	</div>
 </div>
-
