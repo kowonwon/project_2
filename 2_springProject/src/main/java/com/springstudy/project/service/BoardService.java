@@ -7,6 +7,8 @@ import com.springstudy.project.domain.Reply;
 
 public interface BoardService {
 	
+	void deleteReply(int no);
+	
 	void updateReply(Reply reply);
 
 	List<Budget> myBoardList(String writer);

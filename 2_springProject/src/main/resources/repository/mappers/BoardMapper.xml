@@ -23,6 +23,10 @@
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
 
+	<delete id="deleteReply">
+		DELETE FROM reply WHERE no = #{no}
+	</delete>
+
 	<update id="updateReply" parameterType="Reply">
 		UPDATE reply
 		SET reply_content = #{replyContent},
