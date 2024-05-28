@@ -37,7 +37,8 @@
 			
 			<input type="date" name="date">
 			
-			<input type="submit" class="submitOne btn btn-primary"></button>
+
+			<input type="submit" class="submitOne btn btn-primary">
 			<input type="reset"  class="resetBtn btn btn-danger">
 			
 		</form>
@@ -45,3 +46,11 @@
 		<button id="submit-all">한 번에 보내기</button>
 	</div>
 </div>
+
+
+<div class="row">
+	<div class="col">
+		<h2>${myList.writer }님의 소비 활동</h2>
+	</div>
+</div>
+

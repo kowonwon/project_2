@@ -42,4 +42,11 @@ public class BoardServiceImpl implements BoardService {
 	public List<Budget> getBudgetByMonth(int year, int month) {
 		return boardDao.getBudgetByMonth(year, month);
 	}
+	
+	
+	// 개인용 보드리스트 ajax 사용
+	@Override
+	public List<Budget> myBoardList(String writer) {
+		return boardDao.myBoardList(writer);
+	}
 }

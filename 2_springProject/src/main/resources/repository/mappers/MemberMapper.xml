@@ -21,26 +21,10 @@
 	  - http://www.mybatis.org/mybatis-3/ko/index.html
 -->
 
-<mapper namespace="com.springstudy.project.mapper.BoardMapper" >
-	<!-- 개인 페이지용 게시판 리스트 출력 -->
-	<select id="myBoardList" resultType="Budget">
-		SELECT *
-		FROM budget
-		WHERE writer = #{writer}
-		ORDER by date DESC
+<mapper namespace="com.springstudy.project.mapper.MemberMapper" >
+	
+	<!-- id에 해당하는 회원정보 조회 -->
+	<select id="getMember" resultType="Member">
+	 SELECT * FROM member WHERE id = #{id}
 	</select>
-	
-	<!-- 년도와 월 기준으로 필터링  -->
-	<select id="getBudgetByMonth" parameterType="map" resultType="Budget">
-        SELECT *
-        FROM budget
-        WHERE EXTRACT(YEAR FROM date) = #{year}
-          AND EXTRACT(MONTH FROM date) = #{month}
-    </select>
-	
-	
-	<select id="boardList" resultType="Budget">
-		SELECT * FROM budget ORDER BY no DESC
-	</select>
-
 </mapper>	

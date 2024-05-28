@@ -57,4 +57,10 @@ public class BoardDaoImpl implements BoardDao{
 		params.put("month", month);
 		return sqlSession.selectList(NAME_SPACE+".getBudgetByMonth", params);
 	}
+	
+	// 개인페이지용 보드리스트
+	@Override
+	public List<Budget> myBoardList(String writer) {
+		return sqlSession.selectList(NAME_SPACE+".myBoardList", writer);
+	}
 }
