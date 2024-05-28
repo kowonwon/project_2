@@ -22,12 +22,28 @@
 -->
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
+
 	<!-- 개인 페이지용 게시판 리스트 출력 -->
 	<select id="myBoardList" resultType="Budget">
 		SELECT *
 		FROM budget
 		WHERE writer = #{writer}
 		ORDER by date DESC
+	</select>
+
+	<insert id="addReply" parameterType="Reply">
+		INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)
+		VALUES(#{bbsNo}, #{replyContent}, #{replyWriter}, SYSDATE())
+	</insert>
+
+	<select id="replyList" resultType="Reply">
+		SELECT
+			no,
+			bbs_no AS bbsNo,
+			reply_content AS replyContent,
+			reply_writer AS replyWriter,
+			reg_date AS regDate
+		FROM reply WHERE bbs_no = #{no} ORDER BY reg_date
 	</select>
 	
 	<!-- 년도와 월 기준으로 필터링  -->
@@ -38,9 +54,26 @@
           AND EXTRACT(MONTH FROM date) = #{month}
     </select>
 	
+	<delete id="deleteBoard">
+		DELETE FROM budget WHERE no = #{no}
+	</delete>
+
+	<update id="updateBoard" parameterType="Budget">
+		UPDATE budget set category=#{category}, content=#{content}, price=#{price}, evaluation=#{evaluation}
+		WHERE no = #{no}
+	</update>
+
+	<insert id="insertBoard" parameterType="Budget" useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO budget (writer, category, content, price, date, evaluation, good, bad)
+		VALUES (#{writer}, #{category}, #{content}, #{price}, SYSDATE(), #{evaluation}, 0, 0)
+	</insert>
+	
+	<select id="getBoard" resultType="Budget">
+		SELECT * FROM budget WHERE no = #{no}
+	</select>
 	
 	<select id="boardList" resultType="Budget">
-		SELECT * FROM budget ORDER BY no DESC
+		SELECT * FROM budget ORDER BY date
 	</select>
 
 </mapper>	

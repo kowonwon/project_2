@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springstudy.project.domain.Budget;
+import com.springstudy.project.domain.Reply;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -25,27 +26,22 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public Budget getBoard(int no) {
-		return null;
+		return sqlSession.selectOne(NAME_SPACE + ".getBoard", no);
 	}
 
 	@Override
 	public void insertBoard(Budget budget) {
-		
-	}
-
-	@Override
-	public String isPassCheck(int no, String pass) {
-		return null;
+		sqlSession.insert(NAME_SPACE + ".insertBoard", budget);
 	}
 
 	@Override
 	public void updateBoard(Budget budget) {
-		
+		sqlSession.update(NAME_SPACE + ".updateBoard", budget);
 	}
 
 	@Override
 	public void deleteBoard(int no) {
-		
+		sqlSession.delete(NAME_SPACE + ".deleteBoard", no);
 	}
 	
 	// 년월 별로 게시글 필터링
@@ -62,5 +58,15 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public List<Budget> myBoardList(String writer) {
 		return sqlSession.selectList(NAME_SPACE+".myBoardList", writer);
+	}
+		
+	@Override
+	public List<Reply> replyList(int no) {
+		return sqlSession.selectList(NAME_SPACE + ".replyList", no);
+		}
+
+	@Override
+	public void addReply(Reply reply) {
+		sqlSession.insert(NAME_SPACE + ".addReply", reply);
 	}
 }
