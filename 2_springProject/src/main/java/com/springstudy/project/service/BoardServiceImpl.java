@@ -76,4 +76,14 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.deleteReply(no);
 
 	}
+
+	@Override
+	public void deleteList(int no) {
+		boardDao.deleteList(no);
+	}
+
+	@Override
+	public void updateList(Budget budget) {
+		boardDao.updateList(budget);
+	}
 }
