@@ -89,6 +89,10 @@
 	<delete id="deleteBoard">
 		DELETE FROM budget WHERE no = #{no}
 	</delete>
+	
+	<delete id="beforeDeleteBoard">
+		DELETE FROM reply WHERE bbs_no = #{no}
+	</delete>
 
 	<update id="updateBoard" parameterType="Budget">
 		UPDATE budget set category=#{category}, content=#{content}, price=#{price}, evaluation=#{evaluation}
