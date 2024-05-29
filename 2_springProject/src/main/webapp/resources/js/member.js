@@ -1,12 +1,50 @@
 $(function() {
 	
+	// 회원정보수정
+	$("#btnPassCheck").click(function() {
+		var oldId = $("#id").val();
+		var oldPass = $("#oldPass").val();
+		
+		if($.trim(oldPass).length == 0) {
+			alert("기존 비밀번호를 입력해주세요.");
+			return false;
+		}
+		var data = "id=" + oldId + "&pass="+oldPass;
+		
+		$.ajax({
+			url: "passCheck.ajax",
+			type: "get",
+			data: data,
+			dataType: "json",
+			success: function(resData) {
+				if(resData.result) {
+					alert("비밀번호가 확인되었습니다. 비밀번호를 수정해주세요.");
+					$("#btnPassCheck").prop("disabled", true);
+					$("#oldPass").prop("readonly", true);
+					$("#pass1").focus();
+				}
+			},
+			error: function() {
+				console.log("Ajax error");
+			}
+		})
+	})
+	
+	$("#memberUpdateForm").on("submit", function() {
+		if(! $("#btnPassCheck").prop("disabled")) {
+			alert("비밀번호 확인을 해주세요.");
+			return false;
+		}
+		return joinFormCheck();
+	})
+	
+	// 회원가입
 	$("#id").on("keyup", function() {
 		var regExp = /[^A-Za-z0-9]/gi;
 		if(regExp.test($(this).val())) {
 			alert("영문과 숫자만 입력할 수 있습니다.");
 			$(this).val($(this).val().replace(regExp, ""));
 		}
-		
 	})
 	
 	$("#pass1").on("keyup", inputCharReplace);

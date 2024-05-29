@@ -25,11 +25,34 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@RequestMapping("/memberUpdateResult")
+	public String memberUpdateInfo(Model model, Member member,
+			String pass1, String emailId, String emailDomain,
+			String mobile1, String mobile2, String mobile3) {
+		member.setPass(pass1);
+		member.setEmail(emailId + "@" + emailDomain);
+		member.setMobile(mobile1 + "-" + mobile2 + "-" + mobile3);
+		
+		if(mobile2.equals("") || mobile3.equals("")) {
+			member.setMobile("");
+		} else {
+			member.setMobile(mobile1 + "-" + mobile2 + "-" + mobile3);
+		}
+		
+		memberService.updateMember(member);
+		model.addAttribute("member", member);
+		return "redirect:calendar";
+	}
+	
+	@RequestMapping("/memberUpdateForm")
+	public String updateForm(Model model, HttpSession session) {
+		return "member/memberUpdateForm";
+	}
+	
 	@RequestMapping("/joinResult")
 	public String joinResult(Model model, Member member,
 			String pass1, String emailId, String emailDomain,
-			String mobile1, String mobile2, String mobile3,
-			@RequestParam(value="emailGet", defaultValue="false")boolean emailGet) {
+			String mobile1, String mobile2, String mobile3) {
 		member.setPass(pass1);
 		member.setEmail(emailId + "@" + emailDomain);
 		member.setMobile(mobile1 + "-" + mobile2 + "-" + mobile3);
