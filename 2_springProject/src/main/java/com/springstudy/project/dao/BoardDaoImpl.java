@@ -75,7 +75,7 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public void insertList(Budget budget) {
 		sqlSession.insert(NAME_SPACE+".insertList", budget);
-		
+	}	
 
 	@Override
 	public void updateReply(Reply reply) {

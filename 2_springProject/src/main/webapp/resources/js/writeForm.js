@@ -139,4 +139,38 @@ $(function() {
             }
         });
     }
+    
+    function updateList(formData) {
+        $.ajax({
+            url: "updateList.ajax",
+            type: "post",
+            data: JSON.stringify(formData),
+            contentType: "application/json",
+            dataType: "json",
+            success: function(resData) {
+                $("#myList").empty();
+                
+                $.each(resData, function(i, b) {
+                    let result = `
+                        <tr>
+                            <td><a href="boardDetail?no=${b.no}"
+                                class="text-decoration-none link-dark">${b.date}</a></td>
+                            <td><a href="boardDetail?no=${b.no}"
+                                class="text-decoration-none link-dark">${b.category}</a></td>
+                            <td><a href="boardDetail?no=${b.no}"
+                                class="text-decoration-none link-dark">${b.content}</a></td>
+                            <td><a href="boardDetail?no=${b.no}"
+                                class="text-decoration-none link-dark">${new Intl.NumberFormat('ko-KR').format(b.price)}</a></td>
+                            <td><a href="boardDetail?no=${b.no}"
+                                class="text-decoration-none link-dark">${b.payment}</a></td>
+                        </tr>
+                    `;
+                    $("#myList").append(result);
+                });             
+            },
+            error: function(xhr, status) {
+                console.log("Error: " + status);
+            }
+        });
+    }
 });

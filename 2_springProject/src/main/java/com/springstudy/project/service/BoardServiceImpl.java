@@ -65,7 +65,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertList(Budget budget) {
 		boardDao.insertList(budget);
-		
+	}	
   @Override
 	public void updateReply(Reply reply) {
 		boardDao.updateReply(reply);
