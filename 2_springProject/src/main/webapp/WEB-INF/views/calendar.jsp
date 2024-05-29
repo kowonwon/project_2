@@ -19,12 +19,18 @@
 	vertical-align: top;
 	padding: 5px;
 }
-git
+
+.sunday{
+	color: red;
+}
+.saturday{
+	color: blue;
+}
 </style>
 
-<table class="calendar">
+<table class="calendar ">
 	<thead>
-		<tr>
+		<tr class="mb-4">
 			<th><input name="preMon" id="preMon" type="button"
 				class="btn btn-outline-secondary" value="<"></th>
 			<th colspan="5" class="year_mon fs-1 fw-bold"></th>
@@ -32,13 +38,13 @@ git
 				class="btn btn-outline-secondary" value=">"></th>
 		</tr>
 		<tr>
-			<th style="color: red;">일</th>
+			<th class="sunday">일</th>
 			<th>월</th>
 			<th>화</th>
 			<th>수</th>
 			<th>목</th>
 			<th>금</th>
-			<th>토</th>
+			<th class="saturday">토</th>
 		</tr>
 	</thead>
 	<tbody>
