@@ -8,8 +8,10 @@ CREATE TABLE IF NOT EXISTS budget(
   category VARCHAR(100) NOT NULL,
   content VARCHAR(100) NOT NULL,
   price int NOT NULL,
-  date TIMESTAMP NOT NULL,
-  evaluation VARCHAR(1000) NOT NULL,
+  payment VARCHAR(100) default "cash",
+  date Timestamp NOT NULL,
+  evaluation VARCHAR(1000) null,
+
   good INTEGER DEFAULT 0,
   bad INTEGER DEFAULT 0
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -18,6 +20,9 @@ INSERT INTO budget (writer, category, content, price, date, evaluation, good, ba
 INSERT INTO budget (writer, category, content, price, date, evaluation, good, bad)
 		VALUES ('Ko', '식비', '넷플릭스 구독료', 5000, sysdate(), '좋음', 0, 0);
 commit;
+
+insert into budget(writer, category, content, price, date, evaluation) values('이현학', '카드', '점심식사', 11000, SYSDATE(), '무난함');
+insert into budget(writer, category, content, price, date, evaluation) values('admin', '카드', '점심식사', 15000, SYSDATE(), '');
 
 -- 게시글 보기
 SELECT * FROM budget ORDER BY no DESC;

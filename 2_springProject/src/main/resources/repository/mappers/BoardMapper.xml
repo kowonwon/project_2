@@ -23,6 +23,14 @@
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
 
+	
+	<insert id="insertList" parameterType="Budget"
+		useGeneratedKeys="true" keyProperty="no">
+		INSERT	into budget (writer, category, content, price, payment, date)
+		VALUES (#{writer}, #{category}, #{content}, #{price}, #{payment}, #{date})
+	</insert>
+
+
 	<delete id="deleteReply">
 		DELETE FROM reply WHERE no = #{no}
 	</delete>

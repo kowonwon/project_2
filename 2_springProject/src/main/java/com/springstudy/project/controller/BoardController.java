@@ -22,14 +22,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@RequestMapping("/writeForm")
-	public String myBoardList(Model model, 
-				@RequestParam("id") String writer) {
-		List <Budget> myList = boardService.myBoardList(writer);
-		model.addAttribute("myList", myList);
-		return "redirect:writeForm?id=이현학";
-	}
-
+	
 	@RequestMapping({"/delete", "deleteBoard"})
 	public String deleteBoard(HttpServletResponse response,
 	PrintWriter out, int no, String pass) {
