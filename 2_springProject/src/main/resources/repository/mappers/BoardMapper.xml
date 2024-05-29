@@ -22,7 +22,13 @@
 -->
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
-
+	
+	<insert id="insertList" parameterType="Budget"
+		useGeneratedKeys="true" keyProperty="no">
+		INSERT	into budget (writer, category, content, price, payment, date)
+		VALUES (#{writer}, #{category}, #{content}, #{price}, #{payment}, #{date})
+	</insert>
+	
 	<!-- 개인 페이지용 게시판 리스트 출력 -->
 	<select id="myBoardList" resultType="Budget">
 		SELECT *

@@ -13,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.springstudy.project.domain.Member;
 import com.springstudy.project.service.MemberService;
 
 @Controller
+@SessionAttributes("member")
 public class MemberController {
 	
 	@Autowired
@@ -51,6 +53,7 @@ public class MemberController {
 		session.setAttribute("isLogin", true);
 		
 		model.addAttribute("member", member); 
+		session.setAttribute("nickname", member.getNickname());
 		System.out.println("member.name : " + member.getNickname());
 		
 		return "redirect:/calendar";

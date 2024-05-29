@@ -6,6 +6,7 @@ import com.springstudy.project.domain.Budget;
 import com.springstudy.project.domain.Reply;
 
 public interface BoardDao {
+	void insertList(Budget budget);
 	
 	List<Budget> myBoardList(String writer);
 	

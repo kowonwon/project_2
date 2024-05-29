@@ -2,31 +2,43 @@ package com.springstudy.project.domain;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Budget {
 	private int no;
 	private String writer;
 	private String category;
 	private String content;
 	private int price;
+	private String payment;
+	
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Timestamp date;
 	private String evaluation;
 	private int good;
 	private int bad;
 	
 	public Budget() {}
-	public Budget(int no, String writer, String category, String content, int price, Timestamp date, String evaluation, int good,
+	public Budget(int no, String writer, String category, String content, int price, String payment, Timestamp date, String evaluation, int good,
 			int bad) {
 		this.no = no;
 		this.writer = writer;
 		this.category = category;
 		this.content = content;
 		this.price = price;
+		this.payment = payment;
 		this.date = date;
 		this.evaluation = evaluation;
 		this.good = good;
 		this.bad = bad;
 	}
 	
+	public String getPayment() {
+		return payment;
+	}
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
 	public int getNo() {
 		return no;
 	}

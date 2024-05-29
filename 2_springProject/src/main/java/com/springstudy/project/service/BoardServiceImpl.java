@@ -61,4 +61,10 @@ public class BoardServiceImpl implements BoardService {
 	public void addReply(Reply reply) {
 		boardDao.addReply(reply);
 	}
+
+	@Override
+	public void insertList(Budget budget) {
+		boardDao.insertList(budget);
+		
+	}
 }
