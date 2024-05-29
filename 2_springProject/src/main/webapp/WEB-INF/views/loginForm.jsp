@@ -5,7 +5,7 @@
 		<form class="my-5" id="loginForm" action="login" method="post">
 			<h2 class="fw-bold">Member Login</h2>
 			<fieldset>	
-				<legend>Member Loin</legend>
+				<legend>Member Login</legend>
 				<div id="login">
 					<p>
 						<label for="userId" class="labelStyle">아이디</label>
