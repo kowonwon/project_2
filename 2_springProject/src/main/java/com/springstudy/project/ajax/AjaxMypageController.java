@@ -1,11 +1,13 @@
 package com.springstudy.project.ajax;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +31,6 @@ public class AjaxMypageController {
 	
 		List <Budget> myList = boardService.myBoardList(writer);
 		model.addAttribute("myList", myList);
-		System.out.println("myList : "+myList);
 		return "myPage";
 	}
 	
@@ -41,5 +42,21 @@ public class AjaxMypageController {
 		return boardService.myBoardList(budget.getWriter());
 				
 	}
-
+	
+	 @PostMapping("/deleteList.ajax")
+	 @ResponseBody
+	    public List<Budget> deleteList(@RequestBody Map<String, Object> payload) {
+		 	int no = Integer.parseInt((String) payload.get("no"));
+	        String writer = (String) payload.get("writer");
+	        System.out.println("no: " + no + ", writer: " + writer); // 디버깅 로그 추가
+	        boardService.deleteList(no);
+	        return boardService.myBoardList(writer);
+	    }
+	
+	@PostMapping("/updateList.ajax")
+	@ResponseBody
+	public List<Budget> updateList(@RequestBody Budget budget) {
+		boardService.updateList(budget);
+		return boardService.myBoardList(budget.getWriter());
+	}
 }

@@ -75,6 +75,7 @@
 				<c:if test="${not empty myList}">
 					<c:forEach var="b" items="${myList}">
 						<tr>
+							<input type="hidden" name="writer" value="${b.writer}" />
 							<td><a href="boardDetail?no=${b.no}"
 								class="text-decoration-none link-dark"><fmt:formatDate
 										value="${b.date}" pattern="yy-MM-dd E" /></a></td>
@@ -88,8 +89,8 @@
 							<td><a href="boardDetail?no=${b.no}"
 								class="text-decoration-none link-dark"></a>${b.payment }</td>
 							<td>
-								<i class="bi bi-pencil-square" ></i>
-								<i class="bi bi-x-octagon deleteList"></i>
+								<i class="bi bi-pencil-square updateList" data-no="${b.no }"></i>
+								<i class="bi bi-x-octagon deleteList" data-no="${b.no }"></i>
 							</td>	
 						</tr>
 					</c:forEach>

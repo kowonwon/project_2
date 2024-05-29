@@ -6,6 +6,10 @@ import com.springstudy.project.domain.Budget;
 import com.springstudy.project.domain.Reply;
 
 public interface BoardDao {
+	void deleteList(int no);
+	
+	void updateList(Budget budget);
+	
 	void insertList(Budget budget);
 	
 	void deleteReply(int no);

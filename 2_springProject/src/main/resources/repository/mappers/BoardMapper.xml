@@ -22,8 +22,21 @@
 -->
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
-
+	<!-- 개인페이지 리스트 삭제 -->
+	<delete id="deleteList">
+		DELETE FROM budget
+		WHERE no =#{no}
+	</delete>
 	
+	<!--개인 페이지 리스트 수정 -->
+	<update id="updateBudget" parameterType="Budget">
+        UPDATE budget
+        SET writer = #{writer}, category = #{category}, content = #{content}, 
+            price = #{price}, payment = #{payment}, date = #{date}
+        WHERE no = #{no}
+    </update>
+	
+	<!--개인페이지 폼 입력 -->
 	<insert id="insertList" parameterType="Budget"
 		useGeneratedKeys="true" keyProperty="no">
 		INSERT	into budget (writer, category, content, price, payment, date)
