@@ -24,8 +24,7 @@ public class BoardController {
 	
 	
 	@RequestMapping({"/delete", "deleteBoard"})
-	public String deleteBoard(HttpServletResponse response,
-	PrintWriter out, int no, String pass) {
+	public String deleteBoard(HttpServletResponse response, int no) {
 		boardService.deleteBoard(no);
 		return "redirect:boardList";
 	}

@@ -41,6 +41,7 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public void deleteBoard(int no) {
+		sqlSession.delete(NAME_SPACE + ".beforeDeleteBoard", no);
 		sqlSession.delete(NAME_SPACE + ".deleteBoard", no);
 	}
 	
@@ -86,4 +87,5 @@ public class BoardDaoImpl implements BoardDao{
 	public void deleteReply(int no) {
 		sqlSession.delete(NAME_SPACE + ".deleteReply", no);
 	}
+
 }

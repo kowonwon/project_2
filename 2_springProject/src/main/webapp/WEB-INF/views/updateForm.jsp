@@ -13,7 +13,7 @@
 			<div class="row">
 				<div class="col-2">
 					<label for="writer" class="form-label" id="writer">작성자</label>
-					<input type="text" class="form-control" name="writer" value="${budget.writer}">
+					<input type="text" class="form-control" name="writer" value="${budget.writer}" readonly>
 				</div>
 				<div class="col-2">
 				<label for="category" class="form-label">카테고리</label>
