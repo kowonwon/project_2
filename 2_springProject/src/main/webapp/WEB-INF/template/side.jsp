@@ -23,10 +23,10 @@
 <div class="row text-center">
 	<div class="col">
 		<c:if test="${not sessionScope.isLogin}">
-			<a class="btn btn-outline-secondary" href="#">회원가입</a>
+			<a class="btn btn-outline-secondary" href="joinForm">회원가입</a>
 		</c:if>
 		<c:if test="${sessionScope.isLogin}">
-			<a class="btn btn-outline-secondary" href="#">정보수정</a>
+			<a class="btn btn-outline-secondary" href="memberUpdateForm">정보수정</a>
 		</c:if>
 	</div>
 </div>

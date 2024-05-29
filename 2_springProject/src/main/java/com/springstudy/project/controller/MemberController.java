@@ -25,8 +25,30 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@RequestMapping("/joinResult")
+	public String joinResult(Model model, Member member,
+			String pass1, String emailId, String emailDomain,
+			String mobile1, String mobile2, String mobile3,
+			@RequestParam(value="emailGet", defaultValue="false")boolean emailGet) {
+		member.setPass(pass1);
+		member.setEmail(emailId + "@" + emailDomain);
+		member.setMobile(mobile1 + "-" + mobile2 + "-" + mobile3);
+		
+		memberService.addMember(member);
+		return "redirect:calendar";
+	}
+	
+	@RequestMapping("/overlapIdCheck")
+	public String overlapIdCheck(Model model, String id) {
+		boolean overlap = memberService.overlapIdCheck(id);
+		model.addAttribute("id", id);
+		model.addAttribute("overlap", overlap);
+		
+		return "forward:WEB-INF/views/member/overlapIdCheck.jsp";
+	}
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(Model model, @RequestParam("userId") String id,
+	public String login(Model model, @RequestParam("id") String id,
 			@RequestParam("pass") String pass, HttpSession session,
 			HttpServletResponse response) throws ServletException, IOException {
 		int result = memberService.login(id, pass);

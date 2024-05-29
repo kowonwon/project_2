@@ -22,6 +22,11 @@
 -->
 
 <mapper namespace="com.springstudy.project.mapper.MemberMapper" >
+
+	<insert id="addMember" parameterType="Member">
+		INSERT INTO member
+		VALUES(#{id}, #{nickname}, #{pass}, #{email}, #{mobile}, SYSDATE())
+	</insert>
 	
 	<!-- id에 해당하는 회원정보 조회 -->
 	<select id="getMember" resultType="Member">
