@@ -16,6 +16,7 @@ $(function() {
             if ($(this).find(".formCheckbox").is(":checked")) {
                 $(this).closest(".submitForm").remove();
             }
+          $("#selectAll").prop("checked", false);  
         });
 
         // 폼이 하나도 없으면 새로운 폼 추가
@@ -37,8 +38,11 @@ $(function() {
                 });
                 console.log('Submitting form:', jsonData);
                 myBoardList(jsonData);
+                $(this).trigger('reset');
             }
+            
         });
+        $("#deleteSelected").click();
     });
 
     // 개별 폼 제출 처리
@@ -52,6 +56,7 @@ $(function() {
         });
         console.log('Submitting form:', jsonData);
         myBoardList(jsonData);
+        $(this).trigger('reset');
     });
 
     // 폼 수정
@@ -85,36 +90,71 @@ $(function() {
     // 새 폼 추가
     function addForm() {
         var newFormHtml = `
-            <form class="submitForm" method="post">
-                <input type="hidden" name="writer" value="${nickname}"/> 
-                <input type="checkbox" class="formCheckbox"> 
-                
-                <select name="category" class="consumeTag">
-                    <option value="" disabled selected>소비태그</option>
-                    <option value="식비">식비</option>
-                    <option value="쇼핑">쇼핑</option>
-                    <option value="편의점&마트">편의점&마트</option>
-                    <option value="교통비">교통비</option>
-                    <option value="보험&세금">보험&세금</option>
-                    <option value="주거&통신">주거&통신</option>
-                    <option value="기타">기타</option>
-                </select> 
-                            
-                <input type="text" name="content" placeholder="소비내역"> 
-                <input type="text" name="price" placeholder="가격"> 
-                
-                <select name="payment" class="paymentMethod">
-                    <option value="" disabled selected>결제수단</option>
-                    <option value="현금">현금</option>
-                    <option value="신용카드">신용카드</option>
-                    <option value="체크카드">체크카드</option>
-                    <option value="모바일결제">모바일 결제</option>
-                    <option value="계좌이체">계좌이체</option>
-                </select> 
-                <input type="date" name="date">
-                <input type="submit" class="submitOne btn btn-primary">
-                <input type="reset" class="resetBtn btn btn-danger">
-            </form>
+          <form class="submitForm p-3" method="post">
+				<!-- 수정 삭제를 위한 히든 인풋 -->
+				<input type="hidden" name="writer" value="${nickname}" />
+				<div class="row mb-2">
+					<div class="col-auto m-0 p-0 ms-1">
+						<input type="checkbox" class="formCheckbox me-1">
+					</div>
+
+					<div class="col ">
+						<div class="row mb-2">
+							<div class="col-3 d-flex align-items-center">
+								<select name="category" class="form-select consume-tag">
+									<option value="" disabled selected>소비태그</option>
+									<option value="식비">식비</option>
+									<option value="쇼핑">쇼핑</option>
+									<option value="펀의점&마트">편의점&마트</option>
+									<option value="교통비">교통비</option>
+									<option value="보험&세금">보험&세금</option>
+									<option value="주거&통신">주거&통신</option>
+									<option value="기타">기타</option>
+								</select>
+							</div>
+							<div class="col">
+								<input type="text" name="content" class="form-control"
+									placeholder="소비내역">
+							</div>
+						</div>
+
+						<div class="row mb-2">
+							<div class="col-3">
+								<select name="payment" class="form-select payment">
+									<option value="" disabled selected>결제수단</option>
+									<option value="현금">현금</option>
+									<option value="신용카드">신용카드</option>
+									<option value="체크카드">체크카드</option>
+									<option value="모바일결제">모바일 결제</option>
+									<option value="계좌이체">계좌이체</option>
+								</select>
+							</div>
+							<div class="col">
+								<input type="text" name="price" class="form-control"
+									placeholder="가격(원)">
+							</div>
+						</div>
+
+						<div class="row mb-2 ">
+							<div class="col">
+								<input type="date" name="date" class="form-control">
+							</div>
+						</div>
+
+						<div class="row mb-2 justify-content-center ">
+							<div class="col-6">
+								<input type="submit" class="submitOne btn btn-primary w-100"
+									value="제출하기">
+							</div>
+							<div class="col-6">
+								<input type="reset" class="resetBtn btn btn-warning w-100"
+									value="취소하기">
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</form>
         `;
         
         $(".formContainer").append(newFormHtml);
