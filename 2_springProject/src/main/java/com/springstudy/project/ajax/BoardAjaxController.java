@@ -16,6 +16,20 @@ public class BoardAjaxController {
 	@Autowired
 	BoardService boardService;
 	
+	@RequestMapping("/replyDelete.ajax")
+	@ResponseBody
+	public List<Reply> deleteReply(int no, int bbsNo) {
+		boardService.deleteReply(no);
+		return boardService.replyList(bbsNo);
+	}
+	
+	@RequestMapping("/replyUpdate.ajax")
+	@ResponseBody
+	public List<Reply> updateReply(Reply reply) {
+		boardService.updateReply(reply);
+		return boardService.replyList(reply.getBbsNo());
+	}
+	
 	@RequestMapping("/replyWrite.ajax")
 	@ResponseBody
 	public List<Reply> addReply(Reply reply) {

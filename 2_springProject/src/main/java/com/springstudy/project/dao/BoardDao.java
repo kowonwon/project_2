@@ -8,6 +8,10 @@ import com.springstudy.project.domain.Reply;
 public interface BoardDao {
 	void insertList(Budget budget);
 	
+	void deleteReply(int no);
+	
+	void updateReply(Reply reply);
+	
 	List<Budget> myBoardList(String writer);
 	
 	void addReply(Reply reply);

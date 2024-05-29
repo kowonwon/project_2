@@ -69,12 +69,21 @@ public class BoardDaoImpl implements BoardDao{
 	public void addReply(Reply reply) {
 		sqlSession.insert(NAME_SPACE + ".addReply", reply);
 	}
+
 	
 	//마이페이지 서브밋시 리스트 추가
 	@Override
 	public void insertList(Budget budget) {
 		sqlSession.insert(NAME_SPACE+".insertList", budget);
 		
-		
+
+	@Override
+	public void updateReply(Reply reply) {
+		sqlSession.update(NAME_SPACE + ".updateReply", reply);
+	}
+
+	@Override
+	public void deleteReply(int no) {
+		sqlSession.delete(NAME_SPACE + ".deleteReply", no);
 	}
 }

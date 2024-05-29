@@ -22,13 +22,26 @@
 -->
 
 <mapper namespace="com.springstudy.project.mapper.BoardMapper" >
+
 	
 	<insert id="insertList" parameterType="Budget"
 		useGeneratedKeys="true" keyProperty="no">
 		INSERT	into budget (writer, category, content, price, payment, date)
 		VALUES (#{writer}, #{category}, #{content}, #{price}, #{payment}, #{date})
 	</insert>
-	
+
+
+	<delete id="deleteReply">
+		DELETE FROM reply WHERE no = #{no}
+	</delete>
+
+	<update id="updateReply" parameterType="Reply">
+		UPDATE reply
+		SET reply_content = #{replyContent},
+		reg_date = SYSDATE()
+		WHERE no = #{no}
+	</update>
+
 	<!-- 개인 페이지용 게시판 리스트 출력 -->
 	<select id="myBoardList" resultType="Budget">
 		SELECT *
@@ -49,7 +62,7 @@
 			reply_content AS replyContent,
 			reply_writer AS replyWriter,
 			reg_date AS regDate
-		FROM reply WHERE bbs_no = #{no} ORDER BY reg_date
+		FROM reply WHERE bbs_no = #{no} ORDER BY reg_date DESC
 	</select>
 	
 	<!-- 년도와 월 기준으로 필터링  -->
