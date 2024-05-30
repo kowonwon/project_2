@@ -10,15 +10,12 @@ CREATE TABLE IF NOT EXISTS budget(
   price int NOT NULL,
   payment VARCHAR(100) default "cash",
   date Timestamp NOT NULL,
-  evaluation VARCHAR(1000) null,
-
-  good INTEGER DEFAULT 0,
-  bad INTEGER DEFAULT 0
+  evaluation VARCHAR(1000) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO budget (writer, category, content, price, date, evaluation, good, bad) VALUES ('Kim', '식비', '저녁 닭가슴살', 1400, sysdate(), '대량구매 굿', 0, 0);
-INSERT INTO budget (writer, category, content, price, date, evaluation, good, bad)
-		VALUES ('Ko', '식비', '넷플릭스 구독료', 5000, sysdate(), '좋음', 0, 0);
+INSERT INTO budget (writer, category, content, price, date, evaluation) VALUES ('Kim', '식비', '저녁 닭가슴살', 1400, sysdate(), '대량구매 굿');
+INSERT INTO budget (writer, category, content, price, date, evaluation)
+		VALUES ('Ko', '식비', '넷플릭스 구독료', 5000, sysdate(), '좋음');
 commit;
 
 insert into budget(writer, category, content, price, date, evaluation) values('이현학', '카드', '점심식사', 11000, SYSDATE(), '무난함');
@@ -45,3 +42,8 @@ CREATE TABLE IF NOT EXISTS reply(
 INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(2, '잘했네요', 'Kang', SYSDATE());
 commit;
 SELECT * FROM reply;
+
+SELECT *
+		FROM budget
+		WHERE writer = '이순신' and DATE(date) = DATE(NOW())
+		ORDER by date DESC;

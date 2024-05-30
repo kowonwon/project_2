@@ -1,6 +1,7 @@
 package com.springstudy.project.controller;
 
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -50,9 +51,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardDetail")
-	public String boardDetail(Model model, int no) {
+	public String boardDetail(Model model, int no, String writer, Timestamp date) {
 		Budget budget = boardService.getBoard(no);
 		model.addAttribute("budget", budget);
+		
+		List<Budget> budgetList = boardService.boardListForOne(writer, date);
+		model.addAttribute("budgetList", budgetList);
 		
 		List<Reply> replyList = boardService.replyList(no);
 		model.addAttribute("replyList", replyList);

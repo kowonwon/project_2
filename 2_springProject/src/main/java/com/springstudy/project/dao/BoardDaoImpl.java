@@ -1,5 +1,6 @@
 package com.springstudy.project.dao;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +61,15 @@ public class BoardDaoImpl implements BoardDao{
 	public List<Budget> myBoardList(String writer) {
 		return sqlSession.selectList(NAME_SPACE+".myBoardList", writer);
 	}
-		
+	
+	// 상세보기용 보드리스트
+	@Override
+	public List<Budget> boardListForOne(String writer, Timestamp date) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("writer", writer);
+		params.put("date", date);
+		return sqlSession.selectList(NAME_SPACE+".boardListForOne", params);
+	}
 	@Override
 	public List<Reply> replyList(int no) {
 		return sqlSession.selectList(NAME_SPACE + ".replyList", no);

@@ -15,12 +15,9 @@ public class Budget {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private Timestamp date;
 	private String evaluation;
-	private int good;
-	private int bad;
 	
 	public Budget() {}
-	public Budget(int no, String writer, String category, String content, int price, String payment, Timestamp date, String evaluation, int good,
-			int bad) {
+	public Budget(int no, String writer, String category, String content, int price, String payment, Timestamp date, String evaluation) {
 		this.no = no;
 		this.writer = writer;
 		this.category = category;
@@ -29,8 +26,6 @@ public class Budget {
 		this.payment = payment;
 		this.date = date;
 		this.evaluation = evaluation;
-		this.good = good;
-		this.bad = bad;
 	}
 	
 	public String getPayment() {
@@ -80,17 +75,5 @@ public class Budget {
 	}
 	public void setEvaluation(String evaluation) {
 		this.evaluation = evaluation;
-	}
-	public int getGood() {
-		return good;
-	}
-	public void setGood(int good) {
-		this.good = good;
-	}
-	public int getBad() {
-		return bad;
-	}
-	public void setBad(int bad) {
-		this.bad = bad;
 	}
 }

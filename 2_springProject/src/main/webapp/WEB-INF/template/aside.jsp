@@ -100,7 +100,7 @@ img.bannerImg{
 			
 			<c:if test="${empty sessionScope.isLogin }" >
 			<div class="ment text-center">
-			 guest 님, 안녕하세요!
+			 로그인을 해주세요.
 			 </div>
 			 </c:if>
 			 

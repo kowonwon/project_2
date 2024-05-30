@@ -20,10 +20,10 @@
 					<thead>
 						<tr class="table-dark">
 							<th>날짜</th>
-							<th>ID</th>
-							<th>총액</th>
+							<th>nickname</th>
+							<th>비용</th>
 							<th>내역</th>
-							<th>평가</th>
+							<th>소비태그</th>
 						</tr>
 					</thead>
 					<tbody class="text-secondary">
@@ -35,8 +35,8 @@
 									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark"><fmt:formatDate value="${b.date}" pattern="yy-MM-dd E"/></a></td>
 									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.writer}</a></td>
 									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark"><fmt:formatNumber value="${b.price}" pattern="#,###"/>원</a></td>
-									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.content }</a></td>
-									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">Good ${b.good} / Bad ${b.bad}</a></td>
+									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.content}</a></td>
+									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.category}</a></td>
 								</tr>
 							</c:forEach>
 						</c:if>

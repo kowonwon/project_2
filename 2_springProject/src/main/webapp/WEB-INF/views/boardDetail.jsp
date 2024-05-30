@@ -2,9 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<script src="resources/js/reply.js"></script>
+<style>
+	.receipt {
+		background-color: lightgray;
+	}
+	.evaluation {
+		background-color: beige;
+	}
+</style>
 <div class="row my-5" id="global-content">
-	<div class="col-6 border border-secondary">
+	<div class="col-6 border border-secondary receipt">
 		<form name="checkForm" id="checkForm">
 			<input type="hidden" name="no" id="no" value="${budget.no}">
 		</form>
@@ -16,10 +23,32 @@
 				</h2>
 			</div>
 		</div>
+		<c:if test="${not empty budgetList}">
+			<c:forEach var="b" items="${budgetList}" >
+				<div class="row">
+					<div class="col">
+						<fmt:formatNumber value="${b.price}" pattern="#,###"/>원 ${b.content}
+					</div>
+				</div>
+			</c:forEach>
+		</c:if>
+		<c:if test="${empty budgetList}">
+			<div class="row">
+				<div class="col">
+					budgetList가 비었습니다.
+				</div>
+			</div>
+		</c:if>
 		<div class="row">
-			<div class="col">
+			<div class="col text-center">
 				<fmt:formatNumber value="${budget.price}" pattern="#,###"/>원
 				 ${budget.content}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col text-center evaluation">
+				<p>소감</p>
+				<pre>${budget.evaluation}</pre>
 			</div>
 		</div>
 		<div class="row my-3">

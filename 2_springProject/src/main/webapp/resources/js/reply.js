@@ -81,20 +81,19 @@ $(function() {
 		}
 		
 		$("#replyForm").find("form").attr({"id": "replyUpdateForm", "data-no": $(this).attr("data-no") });
-		$("#replyWriteButton").val("평가수정");
+		$("#replyWriteButton").val("평가 수정");
 		
 		var reply = $(this).parent().prev().find("pre").text();
 		$("#replyContent").val($.trim(reply));
 	})
 	
 	$(document).on("submit", "#replyUpdateForm", function(e) {
-		e.preventDefault();
 		if($("#replyContent").val().length = 0) {
 			alert("내용을 입력해주세요.");
 			return false;
 		}
 		
-		$("#global-content > div").append($("#replyForm").slideUp(300));
+		$("#global-content > div").append($("#replyForm").css("display", "none"));
 		var params = $(this).serialize() + "&no=" + $(this).attr("data-no");
 		console.log(params);
 		
@@ -105,7 +104,6 @@ $(function() {
 			dataType: "json",
 			success: function(resData, status, xhr) {
 				console.log(resData);
-				
 				$("#replyList").empty();
 				$.each(resData, function(i, v) {
 					var date = new Date(v.regDate);
@@ -143,6 +141,7 @@ $(function() {
 					$("#replyList").append(result);
 				})
 				$("#replyContent").val("");
+				$("#replyForm").css("display", "none");
 			},
 			error: function(error) {
 				alert("ajax 실패");
@@ -161,7 +160,7 @@ $(function() {
 				$("#replyForm").insertAfter("#replyTitle").slideDown(300);
 			}, 300)
 		} else {
-			$("#replyForm").removeClass("d-none").css("display", "none").insertBefore("#replyTitle").slideDown(300);
+			$("#replyForm").removeClass("d-none").css("display", "none").insertAfter("#replyTitle").slideDown(300);
 		}
 		$("#replyForm").find("form").attr("id", "replyWriteForm").removeAttr("data-no");
 		$("#replyContent").val("");
@@ -170,7 +169,6 @@ $(function() {
 	
 	$(document).on("submit", "#replyWriteForm", function(e) {
 		var params = $(this).serialize();
-		console.log(params);
 		
 		$.ajax({
 			url: "replyWrite.ajax",

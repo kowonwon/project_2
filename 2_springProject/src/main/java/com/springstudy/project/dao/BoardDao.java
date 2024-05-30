@@ -1,5 +1,6 @@
 package com.springstudy.project.dao;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.springstudy.project.domain.Budget;
@@ -25,6 +26,8 @@ public interface BoardDao {
 	List<Budget> getBudgetByMonth(int year, int month);
 	
 	List<Budget> boardList();
+	
+	List<Budget> boardListForOne(String writer, Timestamp date);
 	
 	Budget getBoard(int no);
 	

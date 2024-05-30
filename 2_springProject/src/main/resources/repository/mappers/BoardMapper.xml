@@ -62,6 +62,13 @@
 		WHERE writer = #{writer}
 		ORDER by date DESC
 	</select>
+	
+	<select id="boardListForOne" resultType="Budget">
+		SELECT *
+		FROM budget
+		WHERE writer = #{writer} and DATE(date) = DATE(#{date})
+		ORDER by date DESC;
+	</select>
 
 	<insert id="addReply" parameterType="Reply">
 		INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)
