@@ -3,20 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
-	.receipt {
-		background-color: lightgray;
-	}
 	.evaluation {
+		width: 25vw;
 		background-color: beige;
 	}
 </style>
 <div class="row my-5" id="global-content">
-	<div class="col-6 border border-secondary receipt">
+	<div class="col-6 border border-secondary border-end-0">
 		<form name="checkForm" id="checkForm">
 			<input type="hidden" name="no" id="no" value="${budget.no}">
 		</form>
-		<div class="row text-center">
-			<div class="col">
+		<div class="row text-center bg-info-subtle">
+			<div class="col mt-3 mb-2">
 				<h2 class="fs-3 fw-bold"><fmt:formatDate value="${budget.date}" pattern="yy-MM-dd(E)"/>
 					${budget.writer}
 					<fmt:formatNumber value="${budget.price}" pattern="#,###"/>원
@@ -39,38 +37,40 @@
 				</div>
 			</div>
 		</c:if>
-		<div class="row">
-			<div class="col text-center">
-				<fmt:formatNumber value="${budget.price}" pattern="#,###"/>원
+		<div class="row my-3">
+			<div class="col text-center fs-5">
 				 ${budget.content}
+				<fmt:formatNumber value="${budget.price}" pattern="#,###"/>원
 			</div>
 		</div>
-		<div class="row">
-			<div class="col text-center evaluation">
-				<p>소감</p>
-				<pre>${budget.evaluation}</pre>
+		<div class="row justify-content-center">
+			<div class="col-10 text-center">
+				<div class="evaluation fs-5 py-3 my-3">
+					<p class="fw-bold">자기평가</p>
+					<p>${budget.evaluation}</p>
+				</div>
 			</div>
 		</div>
 		<div class="row my-3">
 			<div class="col text-center">
-				<input type="button" class="btn btn-outline-primary" id="detailUpdate" value="수정하기" >
+				<input type="button" class="btn btn-outline-success btn-sm" id="detailUpdate" value="수정하기" >
 				&nbsp;&nbsp;
-				<input type="button" class="btn btn-outline-primary" id="detailDelete" value="삭제하기" >
+				<input type="button" class="btn btn-outline-warning btn-sm" id="detailDelete" value="삭제하기" >
 					&nbsp;&nbsp;
-				<input type="button" class="btn btn-outline-primary" value="목록보기" 
+				<input type="button" class="btn btn-outline-success btn-sm" value="목록보기" 
 					onclick="location.href='boardList'">
 			</div>
 		</div>
 	</div>
 	<!-- 댓글 -->
 	<div class="col-6 border border-secondary">
-		<div class="row" id="replyTitle">
-			<div class="col text-center mt-3">
-				<h3>평가</h3>
+		<div class="row bg-info-subtle" id="replyTitle">
+			<div class="col text-center mt-3 mb-2 fs-3">
+				<h3 class="fw-bold">평가</h3>
 			</div>
 		</div>
-		<div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-		  <button id="replyWrite" class="btn btn-outline-primary me-md-2" type="button">평가하기</button>
+		<div class="d-grid gap-2 d-md-flex justify-content-md-end my-3">
+		  <button id="replyWrite" class="btn btn-outline-success me-md-2" type="button">평가하기</button>
 		</div>
 		<c:if test="${not empty replyList}">
 			<div class="row mb-3">
@@ -79,7 +79,7 @@
 						<div class="replyRow row">
 							<div class="col-8">
 								<div class="row">
-									<div class="col">
+									<div class="col fs-5">
 										<span>${r.replyWriter}</span>
 										<span class="me-3">
 											<fmt:formatDate value="${r.regDate}" pattern="yy-MM-dd HH:mm:ss" />
@@ -87,8 +87,8 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col">
-										<pre>${r.replyContent}</pre>
+									<div class="col fs-6">
+										<p>${r.replyContent}</p>
 									</div>
 								</div>
 							</div>
