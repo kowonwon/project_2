@@ -81,9 +81,9 @@
 							<div class="col-8">
 								<div class="row">
 									<div class="col fs-5">
-										<span>${r.replyWriter}</span>
+										<span>${r.replyWriter} </span>
 										<span class="me-3">
-											<fmt:formatDate value="${r.regDate}" pattern="yy-MM-dd HH:mm:ss" />
+											<fmt:formatDate value="${r.regDate}" pattern="yyyy-MM-dd HH:mm:ss" />
 										</span>
 									</div>
 								</div>
