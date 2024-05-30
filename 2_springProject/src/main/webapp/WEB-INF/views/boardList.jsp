@@ -6,7 +6,7 @@
 	<div class="col">
 		<div class="row text-center">
 			<div class="col">
-				<h2 class="fs-3 fw-bold">${id}의 영수증</h2>
+				<h2 class="fs-3 fw-bold">List</h2>
 			</div>
 		</div>
 		<div class="row">
