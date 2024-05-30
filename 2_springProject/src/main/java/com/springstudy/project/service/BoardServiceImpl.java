@@ -1,5 +1,6 @@
 package com.springstudy.project.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void updateList(Budget budget) {
 		boardDao.updateList(budget);
+	}
+
+	// 상세보기용 보드리스트
+	@Override
+	public List<Budget> boardListForOne(String writer, Timestamp date) {
+		return boardDao.boardListForOne(writer, date);
 	}
 }

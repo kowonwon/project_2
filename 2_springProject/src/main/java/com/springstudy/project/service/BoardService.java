@@ -1,5 +1,6 @@
 package com.springstudy.project.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import com.springstudy.project.domain.Budget;
@@ -18,6 +19,8 @@ public interface BoardService {
 
 
 	List<Budget> myBoardList(String writer);
+	
+	List<Budget> boardListForOne(String writer, Timestamp date);
 
 	void addReply(Reply reply);
 	
