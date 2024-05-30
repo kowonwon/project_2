@@ -1,0 +1,70 @@
+
+.calendar {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.calendar th {
+	text-align: center;
+	font-size: 25px;
+}
+
+.calendar td {
+	border: 1px solid black;
+	width: 14%;
+	height: 100px;
+	vertical-align: top;
+	padding: 5px;
+}
+
+.sunday {
+	color: red;
+}
+
+.saturday {
+	color: blue;
+}
+
+.modal-content{
+	height: 700px;
+	font-family: Inconsolata;
+}
+
+.modal-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* 중앙 정렬 */
+}
+
+.modal-header h1 {
+	margin: 0; /* 간격 조정 */
+	text-align: center; /* 중앙 정렬 */
+}
+
+.modal-header h4 {
+	width: 100%;
+	text-align: left; /* 왼쪽 정렬 */
+	margin: 5px 0;
+}
+
+.modal-body th, .modal-body td {
+	text-align: center;
+}
+
+.modal-body th {
+	font-size: 18px;
+}
+
+
+.modal-body td:nth-child(1){
+	text-align: left; /* Smaller font size for the middle column */
+	
+}
+
+.modal-body td:nth-child(2) {
+	font-size: 16px; /* Smaller font size for the middle column */
+}
+
+.modal-body td:not(:nth-child(2)) {
+	font-size: 20px; /* Larger font size for the other columns */
+}

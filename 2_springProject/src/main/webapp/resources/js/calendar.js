@@ -57,12 +57,6 @@ $(function() {
                 cell.addClass('saturday');
             }
 
-            // 클릭시 모달창
-            cell.click(function() {
-                var selectedDate = year + '년 ' + month + '월 ' + $(this).data('date') + '일';
-                $('#selectedDate').text(selectedDate);
-                $('#dateModal').modal('show');
-            });
             row.append(cell);
         }
 
@@ -78,8 +72,10 @@ $(function() {
             data: { year: year, month: month },
             dataType: "json",
             success: function(resData) {
+            	console.log(resData);
                 // 날짜별 지출 총액을 저장할 객체
                 var totalSpending = {};
+                var receipt = {};
 
                 // 데이터를 처리하여 날짜별 지출 총액 계산
                 $.each(resData, function(i, v) {
@@ -87,17 +83,50 @@ $(function() {
                     let cellDate = d.getDate();
                     if (!totalSpending[cellDate]) {
                         totalSpending[cellDate] = 0;
+                        receipt[cellDate] = [];
                     }
                     totalSpending[cellDate] += parseInt(v.price);
+                    receipt[cellDate].push({writer: v.writer, price:v.price, content:v.content});
                 });
 
                 // 계산된 지출 총액을 각 셀에 표시
                 $('table.calendar tbody td').each(function() {
                     var cellDate = $(this).data('date');
                     if (totalSpending[cellDate]) {
-                        $(this).append('<div style="color: black; font-weight: bold;">지출 총액: ' + totalSpending[cellDate] + '원</div>');
+                        $(this).append('<div style="color: black; font-weight: bold;">지출 총액: <br>' + totalSpending[cellDate] + '원</div>');
+                        $(this).data('receipt', receipt[cellDate]);
                     }
-
+                    
+                    // 클릭시 모달창
+                    $(this).click(function() {
+                        var receipts = $(this).data('receipt'); // 셀에 저장된 receipt 데이터를 가져옴
+                        var modalContent = '';
+                        var selectedDateText= year+'년 '+month+'월 '+$(this).data('date')+'일';
+                        $('#selectedDate').text(selectedDateText);
+                        $('#totalSpending').text(totalSpending[$(this).data('date')] + '원'); // 총 지출액 표시
+                        $.each(receipts, function(i, receipt) {
+                            modalContent += `
+                                <tr>
+                                    <td class="ps-3">${receipt.content}</td>
+                                    <td>${receipt.writer}</td>
+                                    <td>${receipt.price}</td>	
+                                </tr>
+                            `;
+                        });
+                        $("#modalBody").html(modalContent); // 모달 내용 채우기
+                        
+                        //js 바코드 생성
+                        JsBarcode("#barcode", year+"0"+month+""+$(this).data('date'), {
+                            format: "CODE128",
+                            width: 3,
+                            height: 40,
+                            displayValue: true,
+                            scale: 3,
+                            textMargin: 5
+                        });
+                        $('#dateModal').modal('show'); // 모달 열기
+                    });
+                    
                     // 요일에 따라 클래스 추가
                     var day = new Date(year, month - 1, cellDate).getDay();
                     if (day === 0) { // 일요일

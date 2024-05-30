@@ -173,6 +173,7 @@ $(function() {
                 $.each(resData, function(i, b) {
                     let result = `
                         <tr>
+                      		<input type="hidden" name="writer" value="${b.writer}" />
                             <td><a href="boardDetail?no=${b.no}"
                                 class="text-decoration-none link-dark">${b.date}</a></td>
                             <td><a href="boardDetail?no=${b.no}"
