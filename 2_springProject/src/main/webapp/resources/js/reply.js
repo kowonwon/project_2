@@ -140,6 +140,7 @@ $(function() {
 							+'</div>';
 					$("#replyList").append(result);
 				})
+				$("#replyForm").slideUp(300);
 				$("#replyContent").val("");
 				$("#replyForm").css("display", "none");
 			},

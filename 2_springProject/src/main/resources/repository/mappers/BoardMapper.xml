@@ -29,7 +29,7 @@
 	</delete>
 	
 	<!--개인 페이지 리스트 수정 -->
-	<update id="updateBudget" parameterType="Budget">
+	<update id="updateList" parameterType="Budget">
         UPDATE budget
         SET writer = #{writer}, category = #{category}, content = #{content}, 
             price = #{price}, payment = #{payment}, date = #{date}
@@ -91,6 +91,7 @@
         FROM budget
         WHERE EXTRACT(YEAR FROM date) = #{year}
           AND EXTRACT(MONTH FROM date) = #{month}
+        ORDER BY date desc  
     </select>
 	
 	<delete id="deleteBoard">

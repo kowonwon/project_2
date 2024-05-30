@@ -158,6 +158,7 @@ $(function() {
         `;
         
         $(".formContainer").append(newFormHtml);
+
     }
 
     function myBoardList(formData) {
