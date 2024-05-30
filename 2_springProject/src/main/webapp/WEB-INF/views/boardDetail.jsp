@@ -13,7 +13,7 @@
 		<form name="checkForm" id="checkForm">
 			<input type="hidden" name="no" id="no" value="${budget.no}">
 		</form>
-		<div class="row text-center bg-info-subtle">
+		<div class="row text-center bg-success-subtle">
 			<div class="col mt-3 mb-2">
 				<h2 class="fs-3 fw-bold"><fmt:formatDate value="${budget.date}" pattern="yy-MM-dd(E)"/>
 					${budget.writer}
@@ -65,7 +65,7 @@
 	</div>
 	<!-- 댓글 -->
 	<div class="col-6 border border-secondary">
-		<div class="row bg-info-subtle" id="replyTitle">
+		<div class="row bg-success-subtle" id="replyTitle">
 			<div class="col text-center mt-3 mb-2 fs-3">
 				<h3 class="fw-bold">평가</h3>
 			</div>

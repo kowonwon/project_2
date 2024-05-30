@@ -42,9 +42,9 @@
 				<tr class="table">
 					<th>날짜</th>
 					<th>ID</th>
-					<th>총액</th>
+					<th>비용</th>
 					<th>내역</th>
-					<th>평가</th>
+					<th>카테고리</th>
 				</tr>
 			</thead>
 			<tbody class="tbody ">
@@ -64,8 +64,7 @@
 							<td><a href="boardDetail?no=${b.no}"
 								class="text-decoration-none link-dark">${b.content }</a></td>
 							<td><a href="boardDetail?no=${b.no}"
-								class="text-decoration-none link-dark">Good ${b.good} / Bad
-									${b.bad}</a></td>
+								class="text-decoration-none link-dark">${b.category}</a></td>
 						</tr>
 					</c:forEach>
 				</c:if>
