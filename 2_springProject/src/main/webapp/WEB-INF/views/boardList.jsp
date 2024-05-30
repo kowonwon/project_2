@@ -10,6 +10,7 @@
 	<div class="col">
 		<div class="row text-center">
 			<div class="col">
+
 				<canvas id="chart1"></canvas>
 			</div>
 			<div class="col">

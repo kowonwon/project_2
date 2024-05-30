@@ -8,8 +8,8 @@
 				<legend>Member Login</legend>
 				<div id="login">
 					<p>
-						<label for="userId" class="labelStyle">아이디</label>
-						<input type="text" id="userId" name="userId" />
+						<label for="id" class="labelStyle">아이디</label>
+						<input type="text" id="id" name="id" />
 					</p>
 					<p>
 						<label for="userPass" class="labelStyle">비밀번호</label>

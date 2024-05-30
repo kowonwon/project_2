@@ -15,10 +15,10 @@
 </head>
 <body>
 	<div class="row container">
-		<div class="col-2 border border-secondary">
-			<%@ include file="template/side.jsp" %>
-		</div>
-		<div class="col-10">
+		<aside class="col-3">
+			<%@ include file="template/aside.jsp" %>
+		</aside>
+		<div class="col-9 mt-5">
 			<jsp:include page="${param.body}" />
 		</div>
 		<%@ include file="template/footer.jsp" %>
