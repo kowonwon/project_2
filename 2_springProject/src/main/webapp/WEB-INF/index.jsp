@@ -18,7 +18,7 @@
 		<aside class="col-3">
 			<%@ include file="template/aside.jsp" %>
 		</aside>
-		<div class="col-9">
+		<div class="col-9 mt-5">
 			<jsp:include page="${param.body}" />
 		</div>
 		<%@ include file="template/footer.jsp" %>

@@ -23,7 +23,6 @@ aside{
 
 div.banner1{
 	margin-top : 20px;
-	margin-bottom : 20px;
 	width: 320px;
 	height: 100px;
 
@@ -35,7 +34,7 @@ div.banner1:hover{
 
 
 div.banner2{
-	margin-bottom : 20px;
+	margin-top : 20px;
 	width: 320px;
 	height: 100px;
 }
@@ -60,6 +59,7 @@ div.ment {
 div.banners{
 	
 	margin-top : 5px;
+	margin-bottom : 40px;
 	width : 320px;
 
 }
@@ -72,7 +72,6 @@ img.bannerImg{
 
 	width: 300px;
 	height: 100px;
-	padding-left : 10px;
 }
 
 .btn-outline-success{
@@ -117,11 +116,12 @@ img.bannerImg{
 			</c:if>
 			
 			<c:if test="${empty sessionScope.isLogin }" >
-				<a href="#" class="btn btn-outline-success btn-sm" style="width:300px;">로그인</a>
+				<button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal" style="width:300px;">
+				  로그인
+				</button>
 			</c:if>
-			
 			<c:if test="${sessionScope.isLogin }" >
-				<a href="#" class="btn btn-outline-success btn-sm">로그아웃</a>
+				<a href="logout" class="btn btn-outline-success btn-sm">로그아웃</a>
 			</c:if>
 			</p>
 			
@@ -143,9 +143,9 @@ img.bannerImg{
 	<div class="banners">
 	<div class="row">
 		<div class="col">
-			<div class="banner1">
+			<div class="banner2">
 			<a href="boardList">
-				<img class="bannerImg" alt="" src="resources/images/receipt.gif">
+				<img class="bannerImg" alt="" src="resources/images/list.gif">
 			</a>
 			</div>
 		</div>
@@ -156,7 +156,7 @@ img.bannerImg{
 	<div class="row">
 		<div class="col">
 			<div class="banner2">
-			<a href="cardList">
+			<a href="calendar">
 				<img class="bannerImg" alt="" src="resources/images/calendar.gif">
 			</a>
 			</div>
@@ -166,9 +166,9 @@ img.bannerImg{
 	<!-- 배너3 -->
 	<div class="row">
 		<div class="col">
-			<div class="banner2">
-			<a href="https://sgsg.hankyung.com/sgplus/quiz" target="_blank">
-				<img class="bannerImg" alt="" src="resources/images/list.gif">
+			<div class="banner1">
+			<a href="myPage">
+				<img class="bannerImg" alt="" src="resources/images/receipt.gif">
 			</a>
 			</div>
 		</div>
@@ -177,7 +177,7 @@ img.bannerImg{
 	<div class="row">
 		<div class="col">
 			<div class="banner2">
-			<a href="https://dic.hankyung.com/economy/list" target="_blank">
+			<a href="#" target="_blank">
 				<img class="bannerImg" alt="" src="resources/images/economy.gif">
 			</a>
 			</div>
