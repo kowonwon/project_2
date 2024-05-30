@@ -24,11 +24,9 @@ public class BoardAjaxController {
 	public List<Budget> boardList(
 			@RequestParam("year") int year,
 			@RequestParam("month") int month){
-        System.out.println("Received year: " + year);
-        System.out.println("Received month: " + month);
-
+      
 	List<Budget> list = boardService.getBudgetByMonth(year, month);
-	 System.out.println("Budget list size: " + list.size());
+	
      for (Budget budget : list) {
          System.out.println(budget.toString());
      }

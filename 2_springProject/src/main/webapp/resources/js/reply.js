@@ -93,8 +93,8 @@ $(function() {
 			alert("내용을 입력해주세요.");
 			return false;
 		}
-		
-		$("#global-content > div").append($("#replyForm").slideUp(300));
+		$("#replyForm").slideUp(300);
+		$("#replyTitle").append($("#replyForm"));
 		var params = $(this).serialize() + "&no=" + $(this).attr("data-no");
 		console.log(params);
 		
@@ -142,6 +142,7 @@ $(function() {
 							+'</div>';
 					$("#replyList").append(result);
 				})
+				$("#replyForm").slideUp(300);
 				$("#replyContent").val("");
 			},
 			error: function(error) {

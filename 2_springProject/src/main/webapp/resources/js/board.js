@@ -8,9 +8,7 @@ $(function(){
     // 월별 데이터 출력
     function boardList(year, month) {
         $(".tbody").empty();
-
-        console.log("Sending AJAX request to boardList.ajax with year:", year, "and month:", month);
-
+        
         $.ajax({
             url: "boardList.ajax",
             type: "get",
@@ -144,16 +142,24 @@ $(function(){
                 }]
             },
             options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: '소비태그 별 비중'
-                    },
-                    legend: {
-                        display: true,
-                        position: 'top'
-                    }
-                }
+            	 plugins: {
+                     title: {
+                         display: true,
+                         text: '카테고리별 가격 분포'
+                     },
+                     legend: {
+                         display: true,
+                         position: 'top'
+                     },
+                     datalabels: {
+                         formatter: (value, ctx) => {
+                             let sum = ctx.dataset._meta[Object.keys(ctx.dataset._meta)[0]].total;
+                             let percentage = (value * 100 / sum).toFixed(2) + "%";
+                             return percentage;
+                         },
+                         color: '#fff',
+                     }
+                 }
             }
         });
     }
@@ -191,11 +197,19 @@ $(function(){
                 plugins: {
                     title: {
                         display: true,
-                        text: '많이 사용하는 결제 수단'
+                        text: '결제 수단별 사용 빈도'
                     },
                     legend: {
                         display: true,
                         position: 'top'
+                    },
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            let sum = ctx.dataset._meta[Object.keys(ctx.dataset._meta)[0]].total;
+                            let percentage = (value * 100 / sum).toFixed(2) + "%";
+                            return percentage;
+                        },
+                        color: '#fff',
                     }
                 }
             }

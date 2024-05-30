@@ -10,6 +10,14 @@
 	
 </script>
 <style>
+.formContainer {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+           
+        }
 .formCheckbox {
 	width: 1.25rem;
 	height: 1.25rem;
@@ -46,9 +54,9 @@
 </div>
 
 <!-- 제출 폼 컨테이너 -->
-<div class="row mt-3">
-	<div class="col">
-		<div class="formContainer border border-secondary-subtle rounded">
+<div class="row mt-3	 ">
+	<div class="col ">
+		<div class="formContainer" id="formContainer" >
 
 			<form class="submitForm p-3" method="post">
 				<!-- 수정 삭제를 위한 히든 인풋 -->
@@ -124,11 +132,8 @@
 	</div>
 </div>
 
-
-
-
-
-<div class="row">
+<!-- myList -->
+<div class="row mt-5">
 	<div class="col">
 		<table class="table table-hover">
 			<thead>
