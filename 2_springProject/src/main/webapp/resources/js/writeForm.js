@@ -85,6 +85,21 @@ $(function() {
         deleteList(formData);
 
     });
+    
+    // 메모 기능
+    $(document).on("click", "#caretDown", function() {
+        var $colDiv = $(this).closest('.col');
+        $colDiv.find('#textarea').animate({ height: '200px' }, 500);
+        $(this).addClass('d-none');
+        $colDiv.find('#caretUp').removeClass('d-none');
+    });
+
+    $(document).on("click", "#caretUp", function() {
+        var $colDiv = $(this).closest('.col');
+        $colDiv.find('#textarea').animate({ height: '38px' }, 500); // 기본 높이로 돌아감
+        $(this).addClass('d-none');
+        $colDiv.find('#caretUp').removeClass('d-none');
+    });    
 
     // 함수
     // 새 폼 추가
@@ -98,7 +113,7 @@ $(function() {
 						<input type="checkbox" class="formCheckbox me-1">
 					</div>
 
-					<div class="col ">
+					<div class="col">
 						<div class="row mb-2">
 							<div class="col-3 d-flex align-items-center">
 								<select name="category" class="form-select consume-tag">
@@ -113,8 +128,7 @@ $(function() {
 								</select>
 							</div>
 							<div class="col">
-								<input type="text" name="content" class="form-control"
-									placeholder="소비내역">
+								<input type="text" name="content" class="form-control" placeholder="소비내역">
 							</div>
 						</div>
 
@@ -130,25 +144,31 @@ $(function() {
 								</select>
 							</div>
 							<div class="col">
-								<input type="text" name="price" class="form-control"
-									placeholder="가격(원)">
+								<input type="text" name="price" class="form-control" placeholder="가격(원)">
 							</div>
 						</div>
 
-						<div class="row mb-2 ">
+						<div class="row mb-2">
 							<div class="col">
 								<input type="date" name="date" class="form-control">
 							</div>
 						</div>
 
-						<div class="row mb-2 justify-content-center ">
+						<!-- 메모 기능 추가 -->
+						<div class="row mb-2">
+							<div class="col position-relative">
+								<textarea class="form-control" id="textarea" name="evaluation" rows="1"></textarea>
+								<i class="bi bi-caret-down-fill fs-5 caret-icon" id="caretDown"></i>
+								<i class="bi bi-caret-up-fill fs-5 d-none caret-icon" id="caretUp"></i>
+							</div>
+						</div>
+
+						<div class="row mb-2 justify-content-center">
 							<div class="col-6">
-								<input type="submit" class="submitOne btn btn-primary w-100"
-									value="제출하기">
+								<input type="submit" class="submitOne btn btn-outline-primary w-100" value="제출하기">
 							</div>
 							<div class="col-6">
-								<input type="reset" class="resetBtn btn btn-warning w-100"
-									value="취소하기">
+								<input type="reset" class="resetBtn btn btn-outline-warning w-100" value="취소하기">
 							</div>
 						</div>
 

@@ -39,8 +39,8 @@
 	<!--개인페이지 폼 입력 -->
 	<insert id="insertList" parameterType="Budget"
 		useGeneratedKeys="true" keyProperty="no">
-		INSERT	into budget (writer, category, content, price, payment, date)
-		VALUES (#{writer}, #{category}, #{content}, #{price}, #{payment}, #{date})
+		INSERT	into budget (writer, category, content, price, payment, date, evaluation)
+		VALUES (#{writer}, #{category}, #{content}, #{price}, #{payment}, #{date}, #{evaluation})
 	</insert>
 
 
