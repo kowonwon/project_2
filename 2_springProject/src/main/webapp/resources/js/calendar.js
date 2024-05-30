@@ -81,6 +81,7 @@ $(function() {
                 $.each(resData, function(i, v) {
                     let d = new Date(v.date);
                     let cellDate = d.getDate();
+             
                     if (!totalSpending[cellDate]) {
                         totalSpending[cellDate] = 0;
                         receipt[cellDate] = [];
@@ -92,6 +93,7 @@ $(function() {
                 // 계산된 지출 총액을 각 셀에 표시
                 $('table.calendar tbody td').each(function() {
                     var cellDate = $(this).data('date');
+                    var spending = totalSpending[cellDate] || 0; // 지출이 없는 경우 0원으로 설정
                     if (totalSpending[cellDate]) {
                         $(this).append('<div style="color: black; font-weight: bold;">지출 총액: <br>' + totalSpending[cellDate] + '원</div>');
                         $(this).data('receipt', receipt[cellDate]);
@@ -103,7 +105,7 @@ $(function() {
                         var modalContent = '';
                         var selectedDateText= year+'년 '+month+'월 '+$(this).data('date')+'일';
                         $('#selectedDate').text(selectedDateText);
-                        $('#totalSpending').text(totalSpending[$(this).data('date')] + '원'); // 총 지출액 표시
+                        $('#totalSpending').text(spending + '원'); // 총 지출액 표시
                         $.each(receipts, function(i, receipt) {
                             modalContent += `
                                 <tr>

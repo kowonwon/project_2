@@ -64,11 +64,15 @@ public class BoardController {
 	public String calendar() {
 		return "calendar";
 	}
-	
-	@RequestMapping(value={"/boardList", "/list"}, method=RequestMethod.GET)
-	public String boardList(Model model) {
-		List<Budget> bList = boardService.boardList();
-		model.addAttribute("bList", bList);
+//	
+//	@RequestMapping(value={"/boardList", "/list"}, method=RequestMethod.GET)
+//	public String boardList(Model model) {
+//		List<Budget> bList = boardService.boardList();
+//		model.addAttribute("bList", bList);
+//		return "boardList";
+//	}
+	@RequestMapping("/boardList")
+	public String boardList() {
 		return "boardList";
 	}
 }

@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springstudy.project.domain.Budget;
 import com.springstudy.project.domain.Reply;
 import com.springstudy.project.service.BoardService;
 
@@ -15,6 +17,23 @@ public class BoardAjaxController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	//월별데이터 출력
+	@RequestMapping("/boardList.ajax")
+	@ResponseBody
+	public List<Budget> boardList(
+			@RequestParam("year") int year,
+			@RequestParam("month") int month){
+        System.out.println("Received year: " + year);
+        System.out.println("Received month: " + month);
+
+	List<Budget> list = boardService.getBudgetByMonth(year, month);
+	 System.out.println("Budget list size: " + list.size());
+     for (Budget budget : list) {
+         System.out.println(budget.toString());
+     }
+	return list;
+	}
 	
 	@RequestMapping("/replyDelete.ajax")
 	@ResponseBody

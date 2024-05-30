@@ -2,11 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="resources/js/board.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <div class="row my-5" id="global-content">
 	<div class="col">
 		<div class="row text-center">
 			<div class="col">
-				<h2 class="fs-3 fw-bold">${id}의 영수증</h2>
+				<canvas id="chart1"></canvas>
+			</div>
+			<div class="col">
+				<canvas id="chart2"></canvas>
+			</div>
+			<div class="col">
+				<canvas id="chart3"></canvas>
 			</div>
 		</div>
 		<div class="row">
@@ -26,10 +36,10 @@
 							<th>평가</th>
 						</tr>
 					</thead>
-					<tbody class="text-secondary">
+					<tbody class="tbody text-secondary">
 						<!-- 게시 글이 있는 경우
 						-->
-						<c:if test="${not empty bList}">
+						 <c:if test="${not empty bList}">
 							<c:forEach var="b" items="${bList}">
 								<tr>
 									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark"><fmt:formatDate value="${b.date}" pattern="yy-MM-dd E"/></a></td>
@@ -39,7 +49,7 @@
 									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">Good ${b.good} / Bad ${b.bad}</a></td>
 								</tr>
 							</c:forEach>
-						</c:if>
+						</c:if> 
 						<!-- 게시 글이 없는 경우
 						-->
 						<c:if test="${ empty bList }">

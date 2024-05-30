@@ -24,7 +24,7 @@
 <!-- 제목부분 -->
 <div class="row bg-info p-2">
 	<div class="col">
-		<h2 class="fs-2 text-white">${nickname }님의 지출내역</h2>
+		<h2 class="fs-2 text-white">${nickname }님의 영수증</h2>
 	</div>
 </div>
 
