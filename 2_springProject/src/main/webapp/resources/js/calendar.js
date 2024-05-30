@@ -72,7 +72,7 @@ $(function() {
             data: { year: year, month: month },
             dataType: "json",
             success: function(resData) {
-            	console.log(resData);
+                
                 // 날짜별 지출 총액을 저장할 객체
                 var totalSpending = {};
                 var receipt = {};
@@ -95,7 +95,8 @@ $(function() {
                     var cellDate = $(this).data('date');
                     var spending = totalSpending[cellDate] || 0; // 지출이 없는 경우 0원으로 설정
                     if (totalSpending[cellDate]) {
-                        $(this).append('<div style="color: black; font-weight: bold;">지출 총액: <br>' + totalSpending[cellDate] + '원</div>');
+                        var formattedSpending = totalSpending[cellDate].toLocaleString();
+                        $(this).append('<div style="color: black; font-weight: bold;">지출 총액: <br>' + formattedSpending + '원</div>');
                         $(this).data('receipt', receipt[cellDate]);
                     }
                     
@@ -105,13 +106,14 @@ $(function() {
                         var modalContent = '';
                         var selectedDateText= year+'년 '+month+'월 '+$(this).data('date')+'일';
                         $('#selectedDate').text(selectedDateText);
-                        $('#totalSpending').text(spending + '원'); // 총 지출액 표시
+                        $('#totalSpending').text(spending.toLocaleString() + '원'); // 총 지출액 표시
                         $.each(receipts, function(i, receipt) {
+                            var formattedPrice = parseInt(receipt.price).toLocaleString();
                             modalContent += `
                                 <tr>
                                     <td class="ps-3">${receipt.content}</td>
                                     <td>${receipt.writer}</td>
-                                    <td>${receipt.price}</td>	
+                                    <td>${formattedPrice}원</td>	
                                 </tr>
                             `;
                         });
