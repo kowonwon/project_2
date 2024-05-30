@@ -145,7 +145,7 @@ img.bannerImg{
 		<div class="col">
 			<div class="banner2">
 			<a href="boardList">
-				<img class="bannerImg" alt="" src="resources/images/list.gif">
+				<img class="bannerImg" alt="" src="resources/images/list.png">
 			</a>
 			</div>
 		</div>
@@ -157,7 +157,7 @@ img.bannerImg{
 		<div class="col">
 			<div class="banner2">
 			<a href="calendar">
-				<img class="bannerImg" alt="" src="resources/images/calendar.gif">
+				<img class="bannerImg" alt="" src="resources/images/calendar.png">
 			</a>
 			</div>
 		</div>
@@ -168,7 +168,7 @@ img.bannerImg{
 		<div class="col">
 			<div class="banner1">
 			<a href="myPage">
-				<img class="bannerImg" alt="" src="resources/images/receipt.gif">
+				<img class="bannerImg" alt="" src="resources/images/receipt.png">
 			</a>
 			</div>
 		</div>
@@ -178,7 +178,7 @@ img.bannerImg{
 		<div class="col">
 			<div class="banner2">
 			<a href="#" target="_blank">
-				<img class="bannerImg" alt="" src="resources/images/economy.gif">
+				<img class="bannerImg" alt="" src="resources/images/economy.png">
 			</a>
 			</div>
 		</div>

@@ -17,15 +17,18 @@
 			<div class="col mt-3 mb-2">
 				<h2 class="fs-3 fw-bold"><fmt:formatDate value="${budget.date}" pattern="yy-MM-dd(E)"/>
 					${budget.writer}
-					<fmt:formatNumber value="${budget.price}" pattern="#,###"/>원
+					<c:forEach var="b" items="${budgetList}">
+						<c:set var="total" value="${total + b.price}" />
+					</c:forEach>
+					<fmt:formatNumber value="${total}" pattern="#,###"/>원
 				</h2>
 			</div>
 		</div>
 		<c:if test="${not empty budgetList}">
 			<c:forEach var="b" items="${budgetList}" >
-				<div class="row">
-					<div class="col">
-						<fmt:formatNumber value="${b.price}" pattern="#,###"/>원 ${b.content}
+				<div class="row my-3 fs-5">
+					<div class="col text-center">
+						${b.content} <fmt:formatNumber value="${b.price}" pattern="#,###"/>원
 					</div>
 				</div>
 			</c:forEach>
@@ -37,17 +40,15 @@
 				</div>
 			</div>
 		</c:if>
-		<div class="row my-3">
-			<div class="col text-center fs-5">
-				 ${budget.content}
-				<fmt:formatNumber value="${budget.price}" pattern="#,###"/>원
-			</div>
-		</div>
 		<div class="row justify-content-center">
 			<div class="col-10 text-center">
 				<div class="evaluation fs-5 py-3 my-3">
 					<p class="fw-bold">자기평가</p>
-					<p>${budget.evaluation}</p>
+					<c:if test="${not empty budgetList}">
+						<c:forEach var="b" items="${budgetList}" >
+							<p>#${b.evaluation}</p>
+						</c:forEach>
+					</c:if>
 				</div>
 			</div>
 		</div>

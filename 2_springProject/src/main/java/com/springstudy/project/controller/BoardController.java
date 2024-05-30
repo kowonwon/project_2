@@ -51,11 +51,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardDetail")
-	public String boardDetail(Model model, int no, String writer, Timestamp date) {
+	public String boardDetail(Model model, int no) {
 		Budget budget = boardService.getBoard(no);
 		model.addAttribute("budget", budget);
 		
-		List<Budget> budgetList = boardService.boardListForOne(writer, date);
+		List<Budget> budgetList = boardService.boardListForOne(budget.getWriter(), budget.getDate());
 		model.addAttribute("budgetList", budgetList);
 		
 		List<Reply> replyList = boardService.replyList(no);
