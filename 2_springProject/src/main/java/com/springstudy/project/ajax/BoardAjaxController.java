@@ -27,9 +27,6 @@ public class BoardAjaxController {
       
 	List<Budget> list = boardService.getBudgetByMonth(year, month);
 	
-     for (Budget budget : list) {
-         System.out.println(budget.toString());
-     }
 	return list;
 	}
 	
