@@ -116,9 +116,9 @@ img.bannerImg{
 			</c:if>
 			
 			<c:if test="${empty sessionScope.isLogin }" >
-				<button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal" style="width:300px;">
+				<a class="btn btn-outline-success btn-sm" href="loginForm" style="width:300px;">
 				  로그인
-				</button>
+				</a>
 			</c:if>
 			<c:if test="${sessionScope.isLogin }" >
 				<a href="logout" class="btn btn-outline-success btn-sm">로그아웃</a>
