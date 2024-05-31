@@ -15,12 +15,16 @@
 				</div>
 			</div>
 			<div class="row my-3">
-				<div class="col-8">
-					<label for="id" class="form-label">아이디 : </label>
-					<input type="text" class="form-control w-10" name="id" id="id">
-				</div>
-				<div class="col-2">
-					<input type="button" class="btn btn-warning" id="btnOverlapId" value="중복확인">
+				<div class="col-8 offset-2">
+					<label for="userId" class="form-label">* 아이디 : </label>
+					<div class="row">
+						<div class="col-8">
+							<input type="text" class="form-control" name="id" id="id">
+						</div>
+						<div class="col-2">
+							<input type="button" class="btn btn-warning" id="btnOverlapId" value="중복확인">
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row my-3">

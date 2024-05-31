@@ -142,7 +142,7 @@
             Google 계정으로 계속하기
         </a>
         <div class="line-divider"></div>
-        계정이 필요하신가요? <a href="#">지금 가입하기</a></p>
+        계정이 필요하신가요? <a href="joinForm">지금 가입하기</a></p>
     </div>
 </body>
 </html>
