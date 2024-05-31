@@ -72,7 +72,7 @@ $(function() {
             data: { year: year, month: month },
             dataType: "json",
             success: function(resData) {
-                
+                console.log(resData);
                 // 날짜별 지출 총액을 저장할 객체
                 var totalSpending = {};
                 var receipt = {};
@@ -87,7 +87,7 @@ $(function() {
                         receipt[cellDate] = [];
                     }
                     totalSpending[cellDate] += parseInt(v.price);
-                    receipt[cellDate].push({writer: v.writer, price:v.price, content:v.content});
+                    receipt[cellDate].push({no: v.no, writer: v.writer, price:v.price, content:v.content});
                 });
 
                 // 계산된 지출 총액을 각 셀에 표시
@@ -111,10 +111,10 @@ $(function() {
                             var formattedPrice = parseInt(receipt.price).toLocaleString();
                             modalContent += `
                                 <tr>
-                                    <td class="ps-3">${receipt.content}</td>
-                                    <td>${receipt.writer}</td>
-                                    <td>${formattedPrice}원</td>	
-                                </tr>
+                            		<td class="ps-3"><a href="boardDetail?no=${receipt.no}">${receipt.content}</a></td>
+                            		<td><a href="boardDetail?no=${receipt.no}">${receipt.writer}</a></td>
+                            		<td><a href="boardDetail?no=${receipt.no}">${formattedPrice}원</a></td>
+                            	</tr>
                             `;
                         });
                         $("#modalBody").html(modalContent); // 모달 내용 채우기
