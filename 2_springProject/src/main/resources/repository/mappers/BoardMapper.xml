@@ -32,7 +32,7 @@
 	<update id="updateList" parameterType="Budget">
         UPDATE budget
         SET writer = #{writer}, category = #{category}, content = #{content}, 
-            price = #{price}, payment = #{payment}, date = #{date}
+            price = #{price}, payment = #{payment}, date = #{date}, evaluation = #{evaluation}
         WHERE no = #{no}
     </update>
 	

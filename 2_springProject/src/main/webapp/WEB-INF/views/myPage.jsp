@@ -168,6 +168,7 @@
 				<c:if test="${not empty myList}">
 					<c:forEach var="b" items="${myList}">
 						<tr>
+							<input type="hidden" name="no" value="${b.no}" />
 							<input type="hidden" name="writer" value="${b.writer}" />
 							<input type="hidden" name="evaluation" value="${b.evaluation}" />
 							<td class="col-2"><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">
