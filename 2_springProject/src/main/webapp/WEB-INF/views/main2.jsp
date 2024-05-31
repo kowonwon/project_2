@@ -85,7 +85,7 @@ a{
 				</div>
 				<div class="col-md-6 section">
 					<h2>경제야 놀자</h2>
-					<video class="video" src="resources/videos/ekonomiya.mov" loop muted></video>
+					<video class="video" src="resources/videos/record2.mov" loop muted></video>
 				</div>
 			</div>
 		</div>

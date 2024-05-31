@@ -72,7 +72,7 @@ $(function() {
         
         // 기존에 추가된 모든 폼 제거
         $("tr.form-row").remove();
-
+    }); 
 
         // 새로운 폼 생성
         var newFormHtml = `
