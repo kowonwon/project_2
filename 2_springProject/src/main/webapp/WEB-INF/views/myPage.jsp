@@ -1,4 +1,4 @@
-gt<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -7,32 +7,47 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 <script type="text/javascript">
 	// 세션에서 nickname 값을 가져와서 JavaScript 변수로 설정합니다.
 <%="var nickname = '" + session.getAttribute("nickname") + "';"%>
-	
 </script>
 <style>
 .formContainer {
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            width: 100%;
-            box-sizing: border-box;
-           
-        }
+	padding: 10px;
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
 .formCheckbox {
 	width: 1.25rem;
 	height: 1.25rem;
 	margin-top: 0.375rem;
 	/* Aligns the checkbox vertically with the select box */
 }
- .table thead th{
-	background-color: rgba(173, 216, 230, 0.5);
+
+.table thead th {
+	background-color: rgba(13, 202, 240, 0.2);
+}
+
+.caret-icon {
+	position: absolute;
+	cursor: pointer;
+}
+
+#caretDown {
+	top: 0;
+	left: 12px;
+}
+
+#caretUp {
+	bottom: 0;
+	right: 12px;
 }
 </style>
 
 <!-- 제목부분 -->
 <div class="row bg-info p-2">
 	<div class="col">
-		<h2 class="fs-2 text-white">${nickname }님의 영수증</h2>
+		<h2 class="fs-2 text-white">${nickname}님의 영수증</h2>
 	</div>
 </div>
 
@@ -40,12 +55,10 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 <div class="row my-3">
 	<div class="col">
 		<div id="controlPanel">
-			<div
-				class="form-check form-switch d-flex align-items-center justify-content-between">
+			<div class="form-check form-switch d-flex align-items-center justify-content-between">
 				<div class="d-flex align-items-center">
-					<input class="form-check-input" type="checkbox" role="switch"
-						id="selectAll"> <span id="deleteSelected"
-						class="ps-3 fs-5">❌ 선택 삭제</span>
+					<input class="form-check-input" type="checkbox" role="switch" id="selectAll">
+					<span id="deleteSelected" class="ps-3 fs-5">❌ 선택 삭제</span>
 				</div>
 				<i class="bi bi-plus-circle text-end fs-5" id="addForm">추가</i>
 			</div>
@@ -54,10 +67,9 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 </div>
 
 <!-- 제출 폼 컨테이너 -->
-<div class="row mt-3	 ">
-	<div class="col ">
-		<div class="formContainer" id="formContainer" >
-
+<div class="row mt-3">
+	<div class="col">
+		<div class="formContainer" id="formContainer">
 			<form class="submitForm p-3" method="post">
 				<!-- 수정 삭제를 위한 히든 인풋 -->
 				<input type="hidden" name="writer" value="${nickname}" />
@@ -66,7 +78,7 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 						<input type="checkbox" class="formCheckbox me-1">
 					</div>
 
-					<div class="col ">
+					<div class="col">
 						<div class="row mb-2">
 							<div class="col-3 d-flex align-items-center">
 								<select name="category" class="form-select consume-tag">
@@ -81,8 +93,7 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 								</select>
 							</div>
 							<div class="col">
-								<input type="text" name="content" class="form-control"
-									placeholder="소비내역">
+								<input type="text" name="content" class="form-control" placeholder="소비내역">
 							</div>
 						</div>
 
@@ -98,25 +109,31 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 								</select>
 							</div>
 							<div class="col">
-								<input type="text" name="price" class="form-control"
-									placeholder="가격(원)">
+								<input type="text" name="price" class="form-control" placeholder="가격(원)">
 							</div>
 						</div>
 
-						<div class="row mb-2 ">
+						<div class="row mb-2">
 							<div class="col">
 								<input type="date" name="date" class="form-control">
 							</div>
 						</div>
 
-						<div class="row mb-2 justify-content-center ">
+						<!-- 메모 기능 추가 -->
+						<div class="row mb-2">
+							<div class="col position-relative">
+								<textarea class="form-control" id="textarea" name="evaluation" rows="1"></textarea>
+								<i class="bi bi-caret-down-fill fs-5 caret-icon" id="caretDown"></i>
+								<i class="bi bi-caret-up-fill fs-5 d-none caret-icon" id="caretUp"></i>
+							</div>
+						</div>
+
+						<div class="row mb-2 justify-content-center">
 							<div class="col-6">
-								<input type="submit" class="submitOne btn btn-primary w-100"
-									value="제출하기">
+								<input type="submit" class="submitOne btn btn-outline-primary w-100" value="제출하기">
 							</div>
 							<div class="col-6">
-								<input type="reset" class="resetBtn btn btn-warning w-100"
-									value="취소하기">
+								<input type="reset" class="resetBtn btn btn-outline-warning w-100" value="취소하기">
 							</div>
 						</div>
 
@@ -128,7 +145,7 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 </div>
 <div class="row my-2">
 	<div class="col">
-		<button id="submitAll" class="btn btn-secondary btn-lg">모두 제출</button>
+		<button id="submitAll" class="btn btn-outline-info btn-lg">모두 제출</button>
 	</div>
 </div>
 
@@ -139,9 +156,9 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 			<thead>
 				<tr class="thead">
 					<th class="col-2">날짜</th>
-					<th class="col-2">소비태그</th>
+					<th class="col-2">카테고리</th>
 					<th class="col-2">가격(원)</th>
-					<th class="col-3">내용</th>
+					<th class="col-3">내역</th>
 					<th class="col-2">결제수단</th>
 					<th class="col-1"></th>
 				</tr>
@@ -152,30 +169,29 @@ gt<%@ page language="java" contentType="text/html; charset=UTF-8"
 					<c:forEach var="b" items="${myList}">
 						<tr>
 							<input type="hidden" name="writer" value="${b.writer}" />
-							<td class="col-2"><a href="boardDetail?no=${b.no}"
-								class="text-decoration-none link-dark"><fmt:formatDate
-										value="${b.date}" pattern="yy-MM-dd" /></a></td>
-							<td class="col-2"><a href="boardDetail?no=${b.no}"
-								class="text-decoration-none link-dark">${b.category}</a></td>
-							<td class="col-2"><a href="boardDetail?no=${b.no}"
-								class="text-decoration-none link-dark">${b.price }</a></td>
-							<td class="col-3"><a href="boardDetail?no=${b.no}"
-								class="text-decoration-none link-dark">${b.content }</a></td>
-							<td class="col-2"><a href="boardDetail?no=${b.no}"
-								class="text-decoration-none link-dark"></a>${b.payment }</td>
-							<td class="col-1"><i class="bi bi-pencil-square updateList"
-								data-no="${b.no }"></i> <i class="bi bi-x-octagon deleteList"
-								data-no="${b.no }"></i></td>
+							<input type="hidden" name="evaluation" value="${b.evaluation}" />
+							<td class="col-2"><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">
+								<fmt:formatDate value="${b.date}" pattern="yy-MM-dd" /></a>
+							</td>
+							<td class="col-2"><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.category}</a></td>
+							<td class="col-2"><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.price}</a></td>
+							<td class="col-3"><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.content}</a></td>
+							<td class="col-2"><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.payment}</a></td>
+							<td class="col-1">
+								<i class="bi bi-pencil-square updateList" data-no="${b.no}"></i>&nbsp;
+								<i class="bi bi-x-octagon deleteList" data-no="${b.no}"></i></td>
 						</tr>
 					</c:forEach>
 				</c:if>
 				<!-- 게시 글이 없는 경우 -->
-				<c:if test="${ empty myList }">
+				<c:if test="${empty myList}">
 					<tr>
-						<td colspan="5" class="text-center">게시 글이 존재하지 않습니다.</td>
+						<td colspan="6" class="text-center">게시 글이 존재하지 않습니다.</td>
 					</tr>
 				</c:if>
 			</tbody>
 		</table>
 	</div>
 </div>
+
+

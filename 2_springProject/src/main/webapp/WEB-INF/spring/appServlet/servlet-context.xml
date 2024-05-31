@@ -1,51 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc
-		https://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans
-		https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context
-		https://www.springframework.org/schema/context/spring-context.xsd">
+<beans:beans
+    xmlns="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
-	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
+    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+    
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-	
-	<beans:bean id="loginCheckInterceptor" class="com.springstudy.project.interceptor.LoginCheckInterceptor" />
-	
-	<interceptors>
-		<interceptor>
-			<mapping path="/boardDetail" />
-			<mapping path="/add*" />
-			<mapping path="/write*" />
-			<mapping path="/update*" />
-			<mapping path="/memberUpdate*" />
-			<mapping path="/myPage*" />
-			<beans:ref bean="loginCheckInterceptor" />
-		</interceptor>
-	</interceptors>
+    <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+    <resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/index.jsp?body=views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
-	<context:component-scan base-package="com.springstudy.project" />
-		
-	
-	<view-controller path="/boardWrite" view-name="writeForm" />
-	<view-controller path="/" view-name="redirect:/boardList" />
-	<redirect-view-controller path="/index" redirect-url="/boardList" />
+    <beans:bean id="loginCheckInterceptor" class="com.springstudy.project.interceptor.LoginCheckInterceptor" />
 
-	<view-controller path="loginForm" view-name="loginForm" />
-	<view-controller path="/joinForm" view-name="member/memberJoinForm" />
-	
+    <interceptors>
+        <interceptor>
+            <mapping path="/boardDetail" />
+            <mapping path="/add*" />
+            <mapping path="/write*" />
+            <mapping path="/update*" />
+            <mapping path="/memberUpdate*" />
+            <mapping path="/myPage*" />
+            <beans:ref bean="loginCheckInterceptor" />
+        </interceptor>
+    </interceptors>
+
+    <!-- BeanNameViewResolver should be set before InternalResourceViewResolver -->
+    <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
+    <!-- View beans for BeanNameViewResolver -->
+    <beans:bean id="main" class="org.springframework.web.servlet.view.JstlView">
+        <beans:property name="url" value="/WEB-INF/views/main.jsp" />
+    </beans:bean>
+    <beans:bean id="main2" class="org.springframework.web.servlet.view.JstlView">
+        <beans:property name="url" value="/WEB-INF/views/main2.jsp" />
+    </beans:bean>
+    <beans:bean id="login" class="org.springframework.web.servlet.view.JstlView">
+        <beans:property name="url" value="/WEB-INF/views/login.jsp" />
+    </beans:bean>
+
+    <!-- InternalResourceViewResolver -->
+    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/index.jsp?body=views/" />
+        <beans:property name="suffix" value=".jsp" />
+    </beans:bean>
+    
+    <!-- Specific View Resolver for /loginForm -->
+    <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <beans:property name="order" value="0" />
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <beans:property name="prefix" value="/WEB-INF/views/" />
+        <beans:property name="suffix" value=".jsp" />
+        <beans:property name="viewNames" value="loginForm" />
+    </beans:bean>
+
+    
+
+    <context:component-scan base-package="com.springstudy.project" />
+
+    <!-- View Controllers -->
+    <view-controller path="/boardWrite" view-name="writeForm" />
+    <view-controller path="/" view-name="redirect:/boardList" />
+    <redirect-view-controller path="/index" redirect-url="/boardList" />
+    <view-controller path="/joinForm" view-name="member/memberJoinForm" />
+
+    <!-- Add View Controllers for loginForm and main -->
+    <view-controller path="/loginForm" view-name="loginForm" />
+    <view-controller path="/main" view-name="main" />
+    <view-controller path="/main2" view-name="main2" />
+
 </beans:beans>
