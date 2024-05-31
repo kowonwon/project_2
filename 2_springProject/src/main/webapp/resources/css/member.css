@@ -1,5 +1,5 @@
-@CHARSET "UTF-8";
-/* 로그인 폼 */
+/* @CHARSET "UTF-8";
+로그인 폼
 #loginForm h2, #loginForm p, 
 #loginForm input, #loginForm label { 
 	margin: 0px;
@@ -76,3 +76,4 @@
 	height: 25px;
 	padding: 5px 10px;
 }
+ */

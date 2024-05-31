@@ -40,12 +40,29 @@
     <beans:bean id="main" class="org.springframework.web.servlet.view.JstlView">
         <beans:property name="url" value="/WEB-INF/views/main.jsp" />
     </beans:bean>
+    <beans:bean id="main2" class="org.springframework.web.servlet.view.JstlView">
+        <beans:property name="url" value="/WEB-INF/views/main2.jsp" />
+    </beans:bean>
+    <beans:bean id="login" class="org.springframework.web.servlet.view.JstlView">
+        <beans:property name="url" value="/WEB-INF/views/login.jsp" />
+    </beans:bean>
 
     <!-- InternalResourceViewResolver -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/index.jsp?body=views/" />
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
+    
+    <!-- Specific View Resolver for /loginForm -->
+    <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <beans:property name="order" value="0" />
+        <beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <beans:property name="prefix" value="/WEB-INF/views/" />
+        <beans:property name="suffix" value=".jsp" />
+        <beans:property name="viewNames" value="loginForm" />
+    </beans:bean>
+
+    
 
     <context:component-scan base-package="com.springstudy.project" />
 
@@ -58,5 +75,6 @@
     <!-- Add View Controllers for loginForm and main -->
     <view-controller path="/loginForm" view-name="loginForm" />
     <view-controller path="/main" view-name="main" />
+    <view-controller path="/main2" view-name="main2" />
 
 </beans:beans>
