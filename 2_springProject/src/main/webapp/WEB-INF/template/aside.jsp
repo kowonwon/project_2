@@ -177,7 +177,7 @@ img.bannerImg{
 	<div class="row">
 		<div class="col">
 			<div class="banner2">
-			<a href="#" target="_blank">
+			<a href="http://192.168.0.22:8080/springstudy-bbs04/loginForm">
 				<img class="bannerImg" alt="" src="resources/images/economy.png">
 			</a>
 			</div>
