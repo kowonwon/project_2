@@ -17,7 +17,7 @@
 				</div>
 				<div class="col-2">
 				<label for="category" class="form-label">카테고리</label>
-					<select class="form-control" name="category">
+					<select class="form-control" name="category" id="category">
 						<option value="">식비</option>
 						<option value="">의류</option>
 						<option value="">생필품</option>
