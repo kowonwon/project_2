@@ -196,6 +196,7 @@ $(function(){
                       'rgba(0, 255, 0, 0.2)',  // Green with 20% opacity
                       'rgba(128, 0, 128, 0.2)',  // Purple with 20% opacity
                       'rgba(255, 165, 0, 0.2)'   // Orange with 20% opacity
+                      'rgba(0, 255, 255, 0.2)' 
                   ],
                   borderColor: [
                       'rgba(255, 0, 0, 1)',  // Red
@@ -204,6 +205,7 @@ $(function(){
                       'rgba(0, 255, 0, 1)',  // Green
                       'rgba(128, 0, 128, 1)',  // Purple
                       'rgba(255, 165, 0, 1)'   // Orange
+                      'rgba(0, 255, 255, 1)' 
                   ],
                     borderWidth: 1
                 }]
