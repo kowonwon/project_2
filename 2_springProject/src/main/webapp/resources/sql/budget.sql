@@ -106,6 +106,17 @@ CREATE TABLE IF NOT EXISTS reply(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(2, '잘했네요', 'Kang', SYSDATE());
+
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '뭐사셨나요', '라이언', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '맛있겠다', '황희', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '짱', '효열', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '바가지 쓰신듯', '동욱', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '멋져요', '은정', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '중고인가요', '형철', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '중고 냄새나는데', '희선', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '무슨운동?', '현학', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '별로다', '고원', SYSDATE());
+INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)VALUES(21, '우엑', '원진', SYSDATE());
 commit;
 SELECT * FROM reply;
 
