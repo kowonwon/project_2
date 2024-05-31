@@ -36,11 +36,11 @@
             height: 150px;
             margin-bottom: 20px;
         }
-        .login-container #gIcon {
+      /*   .login-container #gIcon {
             width: 24px;
             height: 24px;
             margin-right: 10px;
-        }
+        } */
         .login-container h2 {
             margin-bottom: 20px;
             font-size: 18px;
@@ -137,12 +137,10 @@
             <button type="submit">로그인</button>
         </form>
         <div class="divider">또는</div>
-        <a href="#" class="google-btn">
-            <img src="resources/images/google-icon.png" id="gIcon" alt="Google Icon"> <!-- 구글 아이콘을 변경하세요 -->
-            Google 계정으로 계속하기
+        <a href="joinForm" class="google-btn">
+            지금 가입하기
         </a>
         <div class="line-divider"></div>
-        계정이 필요하신가요? <a href="joinForm">지금 가입하기</a></p>
     </div>
 </body>
 </html>
