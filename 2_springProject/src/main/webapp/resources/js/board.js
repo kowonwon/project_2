@@ -4,7 +4,8 @@ $(function(){
     var month = now.getMonth() + 1;
 
     boardList(year, month);
-
+   
+    
     // 월별 데이터 출력
     function boardList(year, month) {
         $(".tbody").empty();
