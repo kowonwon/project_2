@@ -64,6 +64,10 @@ video {
 	border-radius: 8px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+a{
+	text-decoration:none;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -76,12 +80,12 @@ video {
 			</div>
 			<div class="row">
 				<div class="col-md-6 section">
-					<h2>나의 영수증</h2>
+					<h2><a href="loginForm">나의 영수증</a></h2>
 					<video class="video" src="resources/videos/record1.mov" loop muted></video>
 				</div>
 				<div class="col-md-6 section">
 					<h2>경제야 놀자</h2>
-					<video class="video" src="resources/videos/ekonomiya.mov" loop muted></video>
+					<video class="video" src="resources/videos/record2.mov" loop muted></video>
 				</div>
 			</div>
 		</div>
@@ -94,6 +98,8 @@ $(document).ready(function(){
 		$(this).find('video').get(0).pause();
 		$(this).find('video').get(0).currentTime = 0;
 	});
+	
+	
 });
 </script>
 </body>

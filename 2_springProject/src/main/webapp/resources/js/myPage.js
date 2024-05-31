@@ -64,19 +64,22 @@ $(function() {
         var row = $(this).closest("tr");
 
         // 행에서 값 추출
+        var no = row.find('input[name="no"]').val();
+        var writer = row.find('input[name="writer"]').val();
         var content = row.find("td:eq(3)").text();
         var price = row.find("td:eq(2)").text();
         var date = row.find("td:eq(0)").text();
         var evaluation = row.find("input[name='evaluation']").val();
 
-        
         // 기존에 추가된 모든 폼 제거
-        $("tr.form-row").remove();
-
+        $("tr.form-row").remove(); 
 
         // 새로운 폼 생성
         var newFormHtml = `
-            <tr class="form-row">
+            <tr class="form-row" >
+        		<input type="hidden" name="no" value="${no}">
+                <input type="hidden" name="writer" value="${writer}">
+                <input type="hidden" name="evaluation" value="${evaluation}">
                 <td colspan="6">
                     <form class="submitForm p-3" method="post">
                         <!-- 수정 삭제를 위한 히든 인풋 -->
@@ -135,7 +138,7 @@ $(function() {
 
                                 <div class="row mb-2 justify-content-center">
                                     <div class="col-6">
-                                        <input type="submit" class="submitOne btn btn-outline-primary w-100" value="제출하기">
+                                        <input type="button" class="updateOne btn btn-outline-primary w-100" value="수정하기">
                                     </div>
                                     <div class="col-6">
                                         <input type="reset" class="resetBtn btn btn-outline-warning w-100" value="취소하기">
@@ -156,25 +159,24 @@ $(function() {
     $(document).on('click', '.resetBtn', function() {
         $(this).closest("tr.form-row").remove();
     });
-
-
     
-    // 폼 수정
-//    $(document).on("click", ".updateList", function(){
-//        var no = $(this).data("no");
-//        var row = $(this).closest("tr");
-//        var formData = {
-//            no: no,
-//            writer: row.find('td:eq(1) a').text(),
-//            category: row.find('td:eq(2) a').text(),
-//            content: row.find('td:eq(3) a').text(),
-//            price: parseInt(row.find('td:eq(4) a').text().replace(/,/g, '')),
-//            payment: row.find('td:eq(5) a').text(),
-//            date: row.find('td:eq(0) a').text()
-//        };
-//        console.log('Updating form:', formData);
-//        updateList(formData);
-//    });
+    // 폼 업데이트 버튼
+    $(document).on("click", ".updateOne", function(){
+        var formRow = $(this).closest("tr.form-row");
+        var formData = formRow.find('input, select, textarea').serializeArray();
+        
+        var jsonData = {};
+        $.each(formData, function() {
+            jsonData[this.name] = this.value;
+        });
+    	        
+        console.log('Submitting form:', jsonData);
+        
+        updateList(jsonData);
+        
+        formRow.remove();
+    });
+
 
     // 폼 삭제
     $(document).on("click", ".deleteList", function(){
@@ -293,8 +295,10 @@ $(function() {
                 console.log(resData)
                 $.each(resData, function(i, b) {
                     let result = `
-                        <tr>
-                      		<input type="hidden" name="writer" value="${b.writer}" />
+                        <tr class="form-row">
+                      		<input type="hidden" name="no" value="${b.no}">
+                            <input type="hidden" name="writer" value="${b.writer}">
+                            <input type="hidden" name="evaluation" value="${b.evaluation}">
                             <td><a href="boardDetail?no=${b.no}"
                                 class="text-decoration-none link-dark">${b.date}</a></td>
                             <td><a href="boardDetail?no=${b.no}"
@@ -333,8 +337,10 @@ $(function() {
                 
                 $.each(resData, function(i, b) {
                     let result = `
-                        <tr>
-                    		<input type="hidden" name="writer" value="${b.writer}" />
+                        <tr class="form-row">
+                    		<input type="hidden" name="no" value="${b.no}">
+                            <input type="hidden" name="writer" value="${b.writer}">
+                            <input type="hidden" name="evaluation" value="${b.evaluation}">
                             <td><a href="boardDetail?no=${b.no}"
                                 class="text-decoration-none link-dark">${b.date}</a></td>
                             <td><a href="boardDetail?no=${b.no}"
@@ -374,8 +380,10 @@ $(function() {
                 
                 $.each(resData, function(i, b) {
                     let result = `
-                        <tr>
-                    		<input type="hidden" name="writer" value="${b.writer}" />
+                    	<tr class="form-row">
+                    		<input type="hidden" name="no" value="${b.no}">
+                            <input type="hidden" name="writer" value="${b.writer}">
+                            <input type="hidden" name="evaluation" value="${b.evaluation}">
                             <td><a href="boardDetail?no=${b.no}"
                                 class="text-decoration-none link-dark">${b.date}</a></td>
                             <td><a href="boardDetail?no=${b.no}"

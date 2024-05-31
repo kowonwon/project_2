@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<script src="resources/js/writeForm.js"></script>
+<script src="resources/js/myPage.js"></script>
 <script type="text/javascript">
 	// 세션에서 nickname 값을 가져와서 JavaScript 변수로 설정합니다.
 <%="var nickname = '" + session.getAttribute("nickname") + "';"%>
@@ -168,6 +168,7 @@
 				<c:if test="${not empty myList}">
 					<c:forEach var="b" items="${myList}">
 						<tr>
+							<input type="hidden" name="no" value="${b.no}" />
 							<input type="hidden" name="writer" value="${b.writer}" />
 							<input type="hidden" name="evaluation" value="${b.evaluation}" />
 							<td class="col-2"><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">
